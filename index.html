@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@300;400;500;600;700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MusicGroup","name":"Revesane","genre":["House","Electronic","Pop"],
- "sameAs":["https://music.yandex.ru/artist/9580812","https://music.apple.com/artist/1361238360","https://www.deezer.com/artist/14612687","https://vk.ru/artist/807661330207661269","https://vk.ru/revesane","https://ok.ru/music/artist/122905159713324","https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA"]}
+ "sameAs":["https://music.yandex.ru/artist/9580812","https://music.apple.com/artist/1361238360","https://www.deezer.com/artist/14612687","https://vk.ru/artist/807661330207661269","https://vk.ru/revesane","https://ok.ru/music/artist/122905159713324","https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA","https://soundcloud.com/revesane"]}
 </script>
 <style>
 /* =====================================================================
@@ -391,7 +391,7 @@ button { font: inherit; color: inherit; }
 .plat-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .plat-links a { font: 600 .68rem/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: var(--r-pill); border: 1px solid var(--line-2); color: var(--soft); transition: color var(--d-1), border-color var(--d-1), background var(--d-1); }
 .plat-links a:hover { color: var(--ink); border-color: var(--cyan); background: rgba(57, 123, 255, .14); }
-.plat.main { grid-column: span 2; grid-row: span 2; background: linear-gradient(160deg, rgba(57, 123, 255, .34), rgba(13, 27, 48, .92) 60%); }
+.plat.main { grid-column: span 3; background: linear-gradient(160deg, rgba(57, 123, 255, .34), rgba(13, 27, 48, .92) 60%); }
 .plat.main b { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; }
 .plat.main p { font-size: var(--fs-md); max-width: 30ch; }
 
@@ -509,6 +509,7 @@ button { font: inherit; color: inherit; }
   .latest-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .plats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .plat.main { grid-column: span 2; grid-row: auto; min-height: 200px; }
+  .plats .plat:last-child { grid-column: span 2; }
   .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .p-vol { display: none; }
   .tools { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; }
@@ -590,7 +591,7 @@ button { font: inherit; color: inherit; }
   .trk .d { display: none; }
   .trk.is-current .d { display: none; }
   .plats { grid-template-columns: minmax(0, 1fr); }
-  .plat.main { grid-column: auto; grid-row: auto; }
+  .plat.main, .plats .plat:last-child { grid-column: auto; grid-row: auto; }
   .plat { min-height: 0; gap: var(--s-4); }
   .tl-bars { height: 120px; gap: 5px; }
   .facts dd { font-size: 1.25rem; }
@@ -677,6 +678,7 @@ button { font: inherit; color: inherit; }
     <a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a>
     <a href="https://ok.ru/music/artist/122905159713324" target="_blank" rel="noopener">Одноклассники</a>
     <a href="https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA" target="_blank" rel="noopener">YouTube</a>
+    <a href="https://soundcloud.com/revesane" target="_blank" rel="noopener">SoundCloud</a>
   </div>
 </div>
 
@@ -832,6 +834,10 @@ button { font: inherit; color: inherit; }
           <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
           <div><b>Одноклассники</b><p>Страница артиста в OK Музыке.</p></div>
         </a>
+        <a class="plat" href="https://soundcloud.com/revesane" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>SoundCloud</b><p>Треки и ремиксы Revesane.</p></div>
+        </a>
         <a class="plat" href="https://lightaudio.ru/mp3/revesane" target="_blank" rel="noopener">
           <div class="top-row"><span class="k">Скачать</span><svg class="i"><use href="#i-ext"/></svg></div>
           <div><b>LightAudio</b><p>Все треки в mp3.</p></div>
@@ -853,7 +859,8 @@ button { font: inherit; color: inherit; }
         <li><a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка</a></li>
         <li><a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a></li>
         <li><a href="https://ok.ru/music/artist/122905159713324" target="_blank" rel="noopener">Одноклассники</a></li>
-        <li><a href="https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA" target="_blank" rel="noopener">YouTube</a></li></ul></div>
+        <li><a href="https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://soundcloud.com/revesane" target="_blank" rel="noopener">SoundCloud</a></li></ul></div>
     </div>
     <div class="ftr-mark" aria-hidden="true">REVESANE</div>
     <div class="ftr-base"><span>© 2026 Revesane. Данные о релизах — Яндекс Музыка и Apple Music.</span><button type="button" id="toTop"><svg class="i"><use href="#i-arrow-down"/></svg>Наверх</button></div>
