@@ -28,7 +28,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@300;400;500;600;700&display=swap">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"MusicGroup","name":"Revesane","genre":["House","Electronic","Pop"],
- "sameAs":["https://music.yandex.ru/artist/9580812","https://music.apple.com/artist/1361238360","https://www.deezer.com/artist/14612687","https://vk.ru/artist/807661330207661269","https://vk.ru/revesane"]}
+ "sameAs":["https://music.yandex.ru/artist/9580812","https://music.apple.com/artist/1361238360","https://www.deezer.com/artist/14612687","https://vk.ru/artist/807661330207661269","https://vk.ru/revesane","https://ok.ru/music/artist/122905159713324","https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA"]}
 </script>
 <style>
 /* =====================================================================
@@ -391,7 +391,7 @@ button { font: inherit; color: inherit; }
 .plat-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
 .plat-links a { font: 600 .68rem/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: var(--r-pill); border: 1px solid var(--line-2); color: var(--soft); transition: color var(--d-1), border-color var(--d-1), background var(--d-1); }
 .plat-links a:hover { color: var(--ink); border-color: var(--cyan); background: rgba(57, 123, 255, .14); }
-.plat.main { grid-row: span 2; background: linear-gradient(160deg, rgba(57, 123, 255, .34), rgba(13, 27, 48, .92) 60%); }
+.plat.main { grid-column: span 2; grid-row: span 2; background: linear-gradient(160deg, rgba(57, 123, 255, .34), rgba(13, 27, 48, .92) 60%); }
 .plat.main b { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; }
 .plat.main p { font-size: var(--fs-md); max-width: 30ch; }
 
@@ -675,6 +675,8 @@ button { font: inherit; color: inherit; }
     <a href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">Apple Music</a>
     <a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка</a>
     <a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a>
+    <a href="https://ok.ru/music/artist/122905159713324" target="_blank" rel="noopener">Одноклассники</a>
+    <a href="https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA" target="_blank" rel="noopener">YouTube</a>
   </div>
 </div>
 
@@ -822,6 +824,14 @@ button { font: inherit; color: inherit; }
           <div><b>ВКонтакте</b><p>Страница артиста в VK Музыке и сообщество с анонсами.</p>
             <div class="plat-links"><a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка ↗</a><a href="https://vk.ru/revesane" target="_blank" rel="noopener">Сообщество ↗</a></div></div>
         </div>
+        <a class="plat" href="https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Смотреть</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>YouTube</b><p>Канал артиста: треки и визуализации.</p></div>
+        </a>
+        <a class="plat" href="https://ok.ru/music/artist/122905159713324" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>Одноклассники</b><p>Страница артиста в OK Музыке.</p></div>
+        </a>
         <a class="plat" href="https://lightaudio.ru/mp3/revesane" target="_blank" rel="noopener">
           <div class="top-row"><span class="k">Скачать</span><svg class="i"><use href="#i-ext"/></svg></div>
           <div><b>LightAudio</b><p>Все треки в mp3.</p></div>
@@ -841,7 +851,9 @@ button { font: inherit; color: inherit; }
         <li><a href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">Apple Music</a></li>
         <li><a href="https://www.deezer.com/artist/14612687" target="_blank" rel="noopener">Deezer</a></li>
         <li><a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка</a></li>
-        <li><a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a></li></ul></div>
+        <li><a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a></li>
+        <li><a href="https://ok.ru/music/artist/122905159713324" target="_blank" rel="noopener">Одноклассники</a></li>
+        <li><a href="https://www.youtube.com/channel/UCfp6y7c9-41b-OkEijmaNgA" target="_blank" rel="noopener">YouTube</a></li></ul></div>
     </div>
     <div class="ftr-mark" aria-hidden="true">REVESANE</div>
     <div class="ftr-base"><span>© 2026 Revesane. Данные о релизах — Яндекс Музыка и Apple Music.</span><button type="button" id="toTop"><svg class="i"><use href="#i-arrow-down"/></svg>Наверх</button></div>
