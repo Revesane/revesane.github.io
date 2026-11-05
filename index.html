@@ -404,6 +404,28 @@ button { font: inherit; color: inherit; }
 .ftr-cols a { color: var(--soft); font-size: var(--fs-sm); transition: color var(--d-1); }
 .ftr-cols a:hover { color: var(--ink); }
 .ftr-about p { margin: 0; color: var(--ink-2); max-width: 36ch; font-size: var(--fs-sm); }
+/* оценки */
+.score { font: 600 .72rem/1 var(--f-ui); color: var(--soft); white-space: nowrap; font-variant-numeric: tabular-nums; margin-left: 6px; }
+.score:empty { display: none; }
+.score::before { content: "★ "; color: var(--cyan); }
+.rate { display: inline-flex; flex-direction: row-reverse; gap: 1px; }
+.rate button { width: 26px; height: 26px; padding: 0; border: 0; background: none; cursor: pointer; color: rgba(140, 174, 255, .28); display: grid; place-items: center; border-radius: 6px; transition: color var(--d-1), transform var(--d-1); }
+.rate button .i { width: 18px; height: 18px; }
+.rate button.on { color: var(--cyan); filter: drop-shadow(0 0 4px rgba(57, 123, 255, .8)); }
+.rate:hover button { color: rgba(140, 174, 255, .28); filter: none; }
+.rate button:hover, .rate button:hover ~ button { color: #9fdcff !important; filter: drop-shadow(0 0 5px rgba(105, 200, 255, .9)) !important; }
+.rate button:active { transform: scale(.88); }
+.rate.sent button.on { animation: starPop .45s var(--ease-out); }
+@keyframes starPop { 40% { transform: scale(1.3); } }
+.rate-lg button { width: 34px; height: 34px; }
+.rate-lg button .i { width: 24px; height: 24px; }
+.feat-rate { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.feat-rate small { font-size: var(--fs-sm); color: var(--ink-2); }
+.feat-rate .score { font-size: .85rem; margin-left: 0; }
+.p-mid .rate { flex: none; }
+.p-mid .rate button { width: 22px; height: 22px; }
+.p-mid .rate button .i { width: 15px; height: 15px; }
+.rate-off .rate, .rate-off .feat-rate, .rate-off .score, .rate-off option[value="top"] { display: none !important; }
 .ftr-donate { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 11px 18px; border-radius: var(--r-pill); border: 1px solid var(--line-2); font: 600 .72rem/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase; transition: border-color var(--d-2), background var(--d-2); }
 .ftr-donate .i { width: 16px; height: 16px; color: var(--cyan); }
 .ftr-donate:hover { border-color: var(--cyan); background: rgba(57, 123, 255, .16); }
@@ -427,7 +449,7 @@ button { font: inherit; color: inherit; }
 .player:hover .p-seek::-webkit-slider-thumb, .p-seek:focus-visible::-webkit-slider-thumb { opacity: 1; }
 .player:hover .p-seek::-moz-range-thumb { opacity: 1; }
 .p-seek:focus-visible { outline: none; }
-.p-in { height: var(--player-h); display: grid; grid-template-columns: minmax(0, 1.25fr) auto minmax(0, 1fr) auto; align-items: center; gap: var(--s-5); }
+.p-in { height: var(--player-h); display: grid; grid-template-columns: minmax(200px, 1fr) auto auto auto; align-items: center; gap: var(--s-5); }
 .p-track { display: flex; align-items: center; gap: var(--s-4); min-width: 0; border: 0; background: none; padding: 0; text-align: left; cursor: default; }
 .p-track img { width: 54px; height: 54px; border-radius: var(--r-sm); object-fit: cover; box-shadow: 0 0 0 1px var(--line-2); flex: none; }
 .p-tt { display: grid; gap: 3px; min-width: 0; }
@@ -498,9 +520,12 @@ button { font: inherit; color: inherit; }
   .hero-cta { margin-top: 22px; }
   .hero-foot { padding-top: 14px; }
 }
+@media (max-width: 1360px) and (min-width: 861px) {
+  #pEq { display: none; }
+}
 @media (max-width: 1180px) {
   .p-links { display: none; }
-  #pEq { width: 110px; }
+  #pEq { display: none; }
   .tools { grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, auto)) auto; }
 }
 @media (max-width: 1024px) {
@@ -558,7 +583,10 @@ button { font: inherit; color: inherit; }
   .player.open .p-links { display: flex; }
   .player.open .p-mid { display: flex; justify-content: center; }
   .player.open .p-mid .p-time { display: none; }
-  .player.open #pEq { width: 220px; height: 40px; }
+  .player.open .p-mid { flex-direction: column; gap: 14px; }
+  .player.open .p-mid .rate button { width: 36px; height: 36px; }
+  .player.open .p-mid .rate button .i { width: 26px; height: 26px; }
+  .player.open #pEq { display: block; width: 220px; height: 40px; }
   .queue { right: 16px; left: 16px; width: auto; }
 }
 @media (max-width: 760px) {
@@ -635,6 +663,7 @@ button { font: inherit; color: inherit; }
   <symbol id="i-grid" viewBox="0 0 24 24"><g class="i-stroke"><rect x="4.5" y="4.5" width="6" height="6" rx="1.2"/><rect x="13.5" y="4.5" width="6" height="6" rx="1.2"/><rect x="4.5" y="13.5" width="6" height="6" rx="1.2"/><rect x="13.5" y="13.5" width="6" height="6" rx="1.2"/></g></symbol>
   <symbol id="i-list" viewBox="0 0 24 24"><g class="i-stroke"><path d="M9 6.5h11M9 12h11M9 17.5h11M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01"/></g></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><g class="i-stroke"><path d="M12 19.5s-7.2-4.4-7.2-10A4.1 4.1 0 0 1 12 7a4.1 4.1 0 0 1 7.2 2.5c0 5.6-7.2 10-7.2 10z"/></g></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3.3l2.7 5.5 6 .9-4.35 4.25 1.03 6L12 17.1l-5.38 2.85 1.03-6L3.3 9.7l6-.9z"/></symbol>
   <symbol id="i-chev" viewBox="0 0 24 24"><g class="i-stroke"><path d="M6 9.5l6 6 6-6"/></g></symbol>
 </svg>
 
@@ -718,6 +747,7 @@ button { font: inherit; color: inherit; }
         <span class="eyebrow">Новый релиз · сингл</span>
         <h2 class="feat-title" id="featTitle">Explosion</h2>
         <div class="chips" id="featChips"></div>
+        <div class="feat-rate"><span id="featRate"></span><small id="featRateHint">Оцени трек</small><span class="score" id="featScore"></span></div>
         <p class="feat-text" id="featText"></p>
         <canvas id="featEq" aria-hidden="true"></canvas>
         <div class="feat-actions">
@@ -765,7 +795,7 @@ button { font: inherit; color: inherit; }
         <label><span class="sr">Жанр</span><select class="sel" id="fg"></select></label>
         <label><span class="sr">Сортировка</span><select class="sel" id="fs">
           <option value="new">Сначала новые</option><option value="old">Сначала старые</option>
-          <option value="az">По названию</option><option value="long">Сначала длинные</option></select></label>
+          <option value="az">По названию</option><option value="long">Сначала длинные</option><option value="top">По оценке слушателей</option></select></label>
         <div class="views" role="group" aria-label="Вид">
           <button type="button" id="vGrid" aria-pressed="true" aria-label="Сеткой"><svg class="i"><use href="#i-grid"/></svg></button>
           <button type="button" id="vList" aria-pressed="false" aria-label="Списком"><svg class="i"><use href="#i-list"/></svg></button>
@@ -885,7 +915,7 @@ button { font: inherit; color: inherit; }
       <button class="icon-btn" type="button" id="pNext" aria-label="Следующий трек"><svg class="i"><use href="#i-next"/></svg></button>
       <button class="icon-btn" type="button" id="pRepeat" aria-pressed="false" aria-label="Повтор: выключен"><svg class="i"><use id="pRepIcon" href="#i-repeat"/></svg></button>
     </div>
-    <div class="p-mid"><canvas id="pEq" aria-hidden="true"></canvas><span class="p-time"><b id="tCur">0:00</b> / <span id="tDur">0:00</span></span></div>
+    <div class="p-mid"><div class="rate" data-rate="" id="pRate" role="radiogroup" aria-label="Оценить трек"><button type="button" data-s="5" role="radio" aria-checked="false" aria-label="5 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="4" role="radio" aria-checked="false" aria-label="4 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="3" role="radio" aria-checked="false" aria-label="3 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="2" role="radio" aria-checked="false" aria-label="2 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="1" role="radio" aria-checked="false" aria-label="1 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button></div><canvas id="pEq" aria-hidden="true"></canvas><span class="p-time"><b id="tCur">0:00</b> / <span id="tDur">0:00</span></span></div>
     <div class="p-right">
       <div class="p-vol">
         <button class="icon-btn" type="button" id="pMute" aria-label="Выключить звук"><svg class="i"><use id="pVolIcon" href="#i-vol"/></svg></button>
@@ -959,7 +989,7 @@ button { font: inherit; color: inherit; }
   /* ================= карточки ================= */
   const card = (r, ctx, meta) => `<button class="rel" type="button" data-play="${r.id}" data-ctx="${ctx}" aria-label="Слушать «${esc(r.t)}», ${r.y}">
       <span class="rel-art"><img src="${cov(r)}" alt="" width="400" height="400" loading="lazy" decoding="async"><span class="rel-btn">${icon("i-play", "i ico")}</span></span>
-      <span class="rel-meta"><b>${EQI}${esc(r.t)}</b><span>${meta}</span></span></button>`;
+      <span class="rel-meta"><b>${EQI}${esc(r.t)}</b><span>${meta}<span class="score" data-score="${r.id}"></span></span></span></button>`;
   const LATEST_IDS = R.slice(1, 9).map(r => r.id);
   $("latestRow").innerHTML = LATEST_IDS.map(id => { const r = byId.get(id); return card(r, "latest", `${r.y} · ${gname(r.g)}`); }).join("");
 
@@ -969,10 +999,11 @@ button { font: inherit; color: inherit; }
     return `<li><button class="trk" type="button" data-play="${r.id}" data-ctx="popular" aria-label="${i + 1}. «${esc(r.t)}», ${r.y}">
       <span class="n">${String(i + 1).padStart(2, "0")}</span>
       <span class="art"><img src="${cov(r)}" alt="" width="400" height="400" loading="lazy" decoding="async">${icon("i-play", "i ico")}</span>
-      <span class="t"><b>${esc(r.t)}</b><small>${r.y} · ${gname(r.g)}</small></span>${EQI}<span class="d">${fmt(r.s)}</span></button></li>`;
+      <span class="t"><b>${esc(r.t)}</b><small>${r.y} · ${gname(r.g)}<span class="score" data-score="${r.id}"></span></small></span>${EQI}<span class="d">${fmt(r.s)}</span></button></li>`;
   }).join("");
 
   /* ================= дискография ================= */
+  let RATE_READY = false;
   const F0 = { q: "", year: "all", genre: "all", sort: "new" };
   const F = Object.assign({}, F0, { view: store.get("view", "grid") });
   let discoIds = R.map(r => r.id);
@@ -983,7 +1014,8 @@ button { font: inherit; color: inherit; }
     const q = norm(F.q);
     let list = R.filter(r => (F.year === "all" || String(r.y) === F.year) && (F.genre === "all" || r.g === F.genre) &&
       (!q || norm(r.t).includes(q) || String(r.y).includes(q) || norm(gname(r.g)).includes(q)));
-    const S = { new: (a, b) => b.d.localeCompare(a.d), old: (a, b) => a.d.localeCompare(b.d), az: (a, b) => a.t.localeCompare(b.t, "ru"), long: (a, b) => b.s - a.s };
+    const S = { new: (a, b) => b.d.localeCompare(a.d), old: (a, b) => a.d.localeCompare(b.d), az: (a, b) => a.t.localeCompare(b.t, "ru"), long: (a, b) => b.s - a.s,
+      top: (a, b) => (rateOf(b).a - rateOf(a).a) || (rateOf(b).c - rateOf(a).c) || b.d.localeCompare(a.d) };
     return list.sort(S[F.sort] || S.new);
   }
   function renderDisco() {
@@ -997,7 +1029,7 @@ button { font: inherit; color: inherit; }
       box.className = "disco-list";
       box.innerHTML = list.map(r => `<div class="lrow" role="button" tabindex="0" data-play="${r.id}" data-ctx="disco" aria-label="Слушать «${esc(r.t)}», ${r.y}">
         <img src="${cov(r)}" alt="" width="400" height="400" loading="lazy" decoding="async">
-        <span class="t">${EQI}<b>${esc(r.t)}</b></span><span class="c">${r.y}</span><span class="c g">${gname(r.g)}</span><span class="c">${fmt(r.s)}</span>
+        <span class="t">${EQI}<b>${esc(r.t)}</b><span class="score" data-score="${r.id}"></span></span><span class="c">${r.y}</span><span class="c g">${gname(r.g)}</span><span class="c">${fmt(r.s)}</span>
         <a class="ext" href="${ya(r)}" target="_blank" rel="noopener" aria-label="«${esc(r.t)}» на Яндекс Музыке" data-noplay>${icon("i-ext")}</a></div>`).join("");
     } else {
       box.className = "disco-grid";
@@ -1008,7 +1040,7 @@ button { font: inherit; color: inherit; }
     $("fReset").hidden = !dirty;
     $("vGrid").setAttribute("aria-pressed", String(F.view === "grid"));
     $("vList").setAttribute("aria-pressed", String(F.view === "list"));
-    syncMarks();
+    syncMarks(); if (typeof rateUI === "function" && RATE_READY) rateUI();
   }
   let qT = 0;
   $("fq").addEventListener("input", e => { clearTimeout(qT); qT = setTimeout(() => { F.q = e.target.value; renderDisco(); }, 90); });
@@ -1222,6 +1254,7 @@ button { font: inherit; color: inherit; }
     $("featPlay").querySelector("use").setAttribute("href", fp ? "#i-pause" : "#i-play");
     $("featPlay").querySelector("span").textContent = fp ? "Пауза" : "Слушать";
     syncMarks(); timeUI();
+    $("pRate").dataset.rate = r.id; $("pRate").setAttribute("aria-label", "Оценить «" + r.t + "»"); rateUI();
     if (!qBox.hidden) renderQueue();
     media(r);
   }
@@ -1542,6 +1575,48 @@ button { font: inherit; color: inherit; }
   new ResizeObserver(() => { clearTimeout(rT); rT = setTimeout(rebuild, built ? 140 : 0); }).observe($("top"));
 
   /* ================= старт ================= */
+  /* ================= оценки (Supabase) ================= */
+  RATE_READY = true;
+  const RATE_API = "https://pfrpnbcezbrjwzmofrqg.supabase.co/rest/v1/rpc/";
+  const RATE_KEY = "sb_publishable_u8XLIjzSGThdpi8swLdLAA_AcP25B8D";   // публичный ключ: даёт только вызов трёх функций
+  const AGG = new Map(), MINE = new Map();
+  const rateOf = r => AGG.get(r.id) || { a: 0, c: 0 };
+  let DEVICE = store.get("device", null);
+  if (!DEVICE) {
+    DEVICE = (crypto.randomUUID ? crypto.randomUUID() : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c => (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)));
+    store.set("device", DEVICE);
+  }
+  const rpc = (fn, body) => fetch(RATE_API + fn, { method: "POST", headers: { apikey: RATE_KEY, "Content-Type": "application/json" }, body: JSON.stringify(body || {}) })
+    .then(x => x.ok ? x.json() : x.json().then(e => Promise.reject(new Error(e.message || x.status))));
+  const fmtA = a => a.toFixed(1).replace(".", ",");
+  $("featRate").outerHTML = `<div class="rate rate-lg" data-rate="${LATEST.id}" role="radiogroup" aria-label="Оценить трек"><button type="button" data-s="5" role="radio" aria-checked="false" aria-label="5 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="4" role="radio" aria-checked="false" aria-label="4 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="3" role="radio" aria-checked="false" aria-label="3 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="2" role="radio" aria-checked="false" aria-label="2 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button><button type="button" data-s="1" role="radio" aria-checked="false" aria-label="1 из 5"><svg class="i" aria-hidden="true"><use href="#i-star"/></svg></button></div>`;
+  function rateUI() {
+    $$("[data-score]").forEach(el => { const g = AGG.get(+el.dataset.score); el.textContent = g && g.c ? `${fmtA(g.a)} · ${g.c}` : ""; el.title = g && g.c ? `Средняя оценка ${fmtA(g.a)} из 5, голосов: ${g.c}` : ""; });
+    const fg = AGG.get(LATEST.id); $("featScore").textContent = fg && fg.c ? `${fmtA(fg.a)} из 5 · ${plural(fg.c, "голос", "голоса", "голосов")}` : "";
+    const mine = MINE.get(LATEST.id); $("featRateHint").textContent = mine ? `Твоя оценка: ${mine}` : "Оцени трек";
+    $$("[data-rate]").forEach(w => {
+      const m = MINE.get(+w.dataset.rate) || 0;
+      w.querySelectorAll("button").forEach(b => { const n = +b.dataset.s; b.classList.toggle("on", n <= m); b.setAttribute("aria-checked", String(n === m)); });
+    });
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest(".rate button"); if (!b) return;
+    e.stopPropagation();
+    const w = b.closest("[data-rate]"), id = +w.dataset.rate, n = +b.dataset.s; if (!id) return;
+    const prev = MINE.get(id); MINE.set(id, n); rateUI();
+    w.classList.remove("sent"); void w.offsetWidth; w.classList.add("sent");
+    rpc("vote", { p_release: id, p_device: DEVICE, p_stars: n })
+      .then(rows => { const x = rows && rows[0]; if (x) AGG.set(id, { a: +x.avg, c: x.votes }); rateUI(); if (F.sort === "top") renderDisco(); })
+      .catch(() => { prev ? MINE.set(id, prev) : MINE.delete(id); rateUI(); toast("Не получилось сохранить оценку. Проверь интернет и попробуй ещё раз."); });
+  }, true);
+  Promise.all([rpc("get_ratings"), rpc("get_my_votes", { p_device: DEVICE })])
+    .then(([all, mine]) => {
+      all.forEach(x => AGG.set(+x.release_id, { a: +x.avg, c: x.votes }));
+      mine.forEach(x => MINE.set(+x.release_id, x.stars));
+      rateUI(); if (F.sort === "top") renderDisco();
+    })
+    .catch(() => document.documentElement.classList.add("rate-off"));   // сервис недоступен (например, превью) — прячем оценки
+
   renderDisco(); syncModes(); volUI(); sync();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeCanvases);
 })();
