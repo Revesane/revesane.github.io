@@ -1,0 +1,1530 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23050914'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%2369c8ff' stroke-width='4'/%3E%3Ccircle cx='32' cy='32' r='19' fill='none' stroke='%23397bff' stroke-width='9' opacity='.25'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="covers/43754801.jpg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Revesane">
+<meta property="og:title" content="Revesane — электронная музыка: хаус, электроника, поп">
+<meta property="og:description" content="Revesane — электронный музыкант. 43 сингла с 2018 года: хаус, электроника и поп. Слушать онлайн, скачать mp3, ссылки на Яндекс Музыку, Apple Music и Deezer.">
+<meta property="og:image" content="https://revesane.github.io/covers/43754801.jpg">
+<meta property="og:image:width" content="400">
+<meta property="og:image:height" content="400">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Revesane — электронная музыка: хаус, электроника, поп">
+<meta name="twitter:description" content="Revesane — электронный музыкант. 43 сингла с 2018 года: хаус, электроника и поп. Слушать онлайн, скачать mp3, ссылки на Яндекс Музыку, Apple Music и Deezer.">
+<meta name="twitter:image" content="https://revesane.github.io/covers/43754801.jpg">
+<link rel="canonical" href="https://revesane.github.io/">
+<meta property="og:url" content="https://revesane.github.io/">
+<title>Revesane — электронная музыка: хаус, электроника, поп</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Revesane — электронный музыкант. 43 сингла с 2018 года: хаус, электроника и поп. Слушать онлайн, скачать mp3, ссылки на Яндекс Музыку, Apple Music и Deezer.">
+<meta name="theme-color" content="#050914">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@300;400;500;600;700&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MusicGroup","name":"Revesane","genre":["House","Electronic","Pop"],
+ "sameAs":["https://music.yandex.ru/artist/9580812","https://music.apple.com/artist/1361238360","https://www.deezer.com/artist/14612687","https://vk.ru/artist/807661330207661269","https://vk.ru/revesane"]}
+</script>
+<style>
+/* =====================================================================
+   REVESANE · Cinematic Dark Blue
+   Layout: первый экран — ночная сцена (canvas: небо, край планеты, горы, туман),
+   поверх неё асимметричная сетка 12 колонок: вордмарк слева, обложка «Now playing»
+   справа выше центра. Дальше секции на глубоком синем фоне с редкими пятнами света,
+   ритм задают крупные обложки. Плеер закреплён снизу.
+   ===================================================================== */
+:root {
+  /* цвет */
+  --bg: #050914;          /* ночь */
+  --bg-2: #081426;        /* второй план */
+  --surface: #0d1b30;     /* поверхности */
+  --surface-2: #10223a;   /* приподнятые поверхности */
+  --blue: #397bff;        /* основной акцент */
+  --cyan: #69c8ff;        /* холодный свет */
+  --soft: #8caeff;        /* мягкий синий */
+  --ink: #f3f6fc;         /* основной текст */
+  --ink-2: #8d9cb3;       /* вторичный текст */
+  --ink-3: #5e6d85;       /* третичный: подписи, оси */
+  --line: rgba(140, 174, 255, .14);
+  --line-2: rgba(140, 174, 255, .28);
+  --glow: rgba(57, 123, 255, .45);
+
+  /* типографика */
+  --f-mark: "Michroma", "Montserrat", "Arial", sans-serif;
+  --f-ui: "Montserrat", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --fs-xs: .72rem; --fs-sm: .85rem; --fs-md: 1rem; --fs-lg: 1.15rem;
+  --fs-h3: 1.35rem; --fs-h2: clamp(1.7rem, 3.4vw, 2.75rem); --fs-hero: clamp(2.3rem, 5.5vw, 5.7rem);
+  --track-wide: .22em; --track-ultra: .58em;
+
+  /* отступы, радиусы, тени */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px;
+  --sec: clamp(80px, 10vw, 150px);
+  --r-sm: 8px; --r-md: 12px; --r-lg: 18px; --r-pill: 999px;
+  --sh-deep: 0 34px 70px -34px rgba(0, 0, 0, .85);
+  --sh-glow: 0 0 0 1px rgba(105, 200, 255, .5), 0 0 42px rgba(57, 123, 255, .38);
+
+  /* движение */
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-io: cubic-bezier(.65, 0, .35, 1);
+  --d-1: .18s; --d-2: .32s; --d-3: .6s; --d-4: 1.1s;
+
+  --hdr-h: 76px;
+  --player-h: 84px;
+  --kick: 0;
+  color-scheme: dark;
+}
+
+/* ---------- база ---------- */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--bg); scroll-behavior: smooth; scroll-padding-top: calc(var(--hdr-h) + 12px); -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 var(--fs-md)/1.6 var(--f-ui); overflow-x: hidden;
+  padding-bottom: calc(var(--player-h) + env(safe-area-inset-bottom, 0px));
+  -webkit-font-smoothing: antialiased;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+::selection { background: rgba(57, 123, 255, .45); }
+.sr { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip { position: fixed; left: 16px; top: -60px; z-index: 50; background: var(--blue); color: #fff; padding: 10px 16px; border-radius: var(--r-sm); }
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 12px); }
+.wrap {
+  max-width: 1320px; margin: 0 auto;
+  padding-left: max(clamp(20px, 4vw, 56px), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(20px, 4vw, 56px), env(safe-area-inset-right, 0px));
+}
+.i { width: 20px; height: 20px; flex: none; display: block; }
+.i-stroke { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* атмосфера всей страницы: несколько неподвижных слоёв света */
+.atmos { position: fixed; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    radial-gradient(60% 45% at 8% 38%, rgba(57, 123, 255, .085), transparent 70%),
+    radial-gradient(50% 40% at 92% 72%, rgba(105, 200, 255, .055), transparent 70%),
+    radial-gradient(90% 60% at 50% 110%, rgba(16, 34, 58, .9), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 55%, var(--bg) 100%);
+}
+
+/* ---------- типовые элементы ---------- */
+.eyebrow { font: 600 var(--fs-xs)/1 var(--f-ui); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--cyan); }
+.h2 { margin: 0; font: 300 var(--fs-h2)/1.08 var(--f-ui); letter-spacing: .1em; text-transform: uppercase; text-wrap: balance; }
+.muted { color: var(--ink-2); }
+.sec { padding-block: var(--sec) 0; position: relative; }
+.sec-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--s-4) var(--s-6); margin-bottom: clamp(28px, 4vw, 48px); }
+.sec-head > div:not(.chips) { display: grid; gap: var(--s-3); min-width: 0; }
+.sec-head .sub { font-size: var(--fs-sm); color: var(--ink-2); }
+.link-arrow { display: inline-flex; align-items: center; gap: 10px; font: 600 var(--fs-xs)/1 var(--f-ui); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--ink); padding: 10px 0; }
+.link-arrow .i { width: 18px; height: 18px; transition: transform var(--d-2) var(--ease-out); }
+.link-arrow:hover .i { transform: translateX(4px); }
+
+/* кнопки */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 0 22px;
+  border-radius: var(--r-pill); border: 1px solid transparent; cursor: pointer;
+  font: 600 .8rem/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap;
+  transition: background var(--d-2) var(--ease-out), border-color var(--d-2), color var(--d-2), transform var(--d-2) var(--ease-out), box-shadow var(--d-2);
+}
+.btn .i { width: 16px; height: 16px; }
+.btn-primary { background: var(--blue); color: #fff; box-shadow: 0 10px 30px -12px rgba(57, 123, 255, .9); }
+.btn-primary:hover { background: #4a88ff; transform: translateY(-1px); }
+.btn-ghost { border-color: var(--line-2); color: var(--ink); background: rgba(8, 20, 38, .35); }
+.btn-ghost:hover { border-color: var(--cyan); color: #fff; }
+.btn-circle {
+  width: 64px; height: 64px; border-radius: 50%; border: 1.5px solid rgba(243, 246, 252, .75); background: rgba(5, 9, 20, .25);
+  display: grid; place-items: center; color: var(--ink); cursor: pointer; flex: none;
+  transition: background var(--d-2) var(--ease-out), border-color var(--d-2), transform var(--d-2) var(--ease-out);
+}
+.btn-circle .i { width: 22px; height: 22px; }
+.btn-circle:hover { background: var(--blue); border-color: var(--blue); transform: scale(1.04); }
+.icon-btn {
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; border: 0; background: none; cursor: pointer; color: var(--ink-2);
+  transition: color var(--d-1), background var(--d-1);
+}
+.icon-btn:hover { color: var(--ink); background: rgba(140, 174, 255, .1); }
+.icon-btn[aria-pressed="true"] { color: var(--cyan); }
+.icon-btn[aria-pressed="true"]::after { content: ""; position: absolute; }
+
+/* индикатор воспроизведения */
+.eqi { display: inline-flex; width: 18px; height: 14px; overflow: hidden; flex: none; }
+.eqi svg { width: 36px; height: 14px; flex: none; fill: none; stroke: var(--cyan); stroke-width: 1.8; stroke-linecap: round; filter: drop-shadow(0 0 3px rgba(57, 123, 255, .9)); transform: scaleY(.45); }
+.is-playing .eqi svg { animation: eqw 1.1s linear infinite, eqa 1.6s var(--ease-io) infinite alternate; }
+@keyframes eqw { to { translate: -18px 0; } }
+@keyframes eqa { from { transform: scaleY(.55); } to { transform: scaleY(1); } }
+
+/* ---------- шапка ---------- */
+.hdr { position: fixed; inset: 0 0 auto; z-index: 20; padding-top: env(safe-area-inset-top, 0px); transition: background var(--d-3) var(--ease-out), border-color var(--d-3); border-bottom: 1px solid transparent; }
+.hdr.solid { background: rgba(5, 9, 20, .96); border-bottom-color: var(--line); }
+.hdr .wrap { height: var(--hdr-h); display: flex; align-items: center; gap: var(--s-6); }
+.logo { font: 400 1.05rem/1 var(--f-mark); letter-spacing: .26em; margin-right: auto; }
+.nav { display: flex; gap: clamp(18px, 2.6vw, 40px); }
+.nav a { font: 500 var(--fs-sm)/1 var(--f-ui); color: var(--soft); padding: 10px 0; position: relative; transition: color var(--d-1); }
+.nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 1px; background: var(--cyan); transform: scaleX(0); transform-origin: left; transition: transform var(--d-2) var(--ease-out); }
+.nav a:hover, .nav a[aria-current="true"] { color: var(--ink); }
+.nav a[aria-current="true"]::after { transform: scaleX(1); }
+.hdr-tools { display: flex; align-items: center; gap: 4px; }
+.donate { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px 0 12px; margin-right: 8px; border-radius: var(--r-pill);
+  border: 1px solid var(--line-2); background: rgba(8, 20, 38, .4); color: var(--ink); font: 600 .7rem/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase;
+  transition: border-color var(--d-2), background var(--d-2), color var(--d-2); }
+.donate .i { width: 16px; height: 16px; color: var(--cyan); transition: transform var(--d-2) var(--ease-out); }
+.donate:hover { border-color: var(--cyan); background: rgba(57, 123, 255, .16); }
+.donate:hover .i { transform: scale(1.15); }
+.hdr .icon-btn { color: var(--ink); }
+#menuBtn { display: none; }
+
+.menu { position: fixed; inset: 0; z-index: 40; background: rgba(5, 9, 20, .97); display: grid; grid-template-rows: auto 1fr auto; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.menu .wrap.top { height: var(--hdr-h); display: flex; align-items: center; justify-content: space-between; }
+.menu nav { display: grid; align-content: center; gap: 6px; }
+.menu nav a { font: 300 clamp(1.8rem, 8vw, 2.6rem)/1.25 var(--f-ui); letter-spacing: .08em; text-transform: uppercase; padding: 8px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+.menu nav a .i { color: var(--cyan); }
+.menu .foot { padding-block: 24px; color: var(--ink-2); font-size: var(--fs-sm); display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.menu .foot a { color: var(--soft); }
+.menu .foot .menu-donate { flex-basis: 100%; display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 600; margin-bottom: 6px; }
+.menu .foot .menu-donate .i { width: 18px; height: 18px; color: var(--cyan); }
+
+/* ---------- первый экран ---------- */
+.hero { position: relative; isolation: isolate; overflow: hidden; min-height: clamp(600px, calc(100svh - var(--player-h)), 940px); display: grid; }
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; display: block; animation: fadeIn 1.8s var(--ease-out) both; }
+.hero::after { content: ""; position: absolute; inset: auto 0 0; height: 140px; z-index: -1; background: linear-gradient(180deg, transparent, var(--bg)); pointer-events: none; }
+.hero-grid {
+  width: 100%; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: 1fr auto; column-gap: var(--s-5);
+  padding-block: calc(var(--hdr-h) + clamp(24px, 5vh, 72px)) clamp(22px, 4vh, 52px);
+}
+.hero-copy { grid-column: 1 / span 8; grid-row: 1; align-self: center; display: grid; justify-items: start; }
+.mark { margin: 0; font: 400 var(--fs-hero)/1 var(--f-mark); letter-spacing: .15em; margin-right: -.15em; white-space: nowrap; color: var(--ink);
+  text-shadow: 0 0 calc(18px + var(--kick) * 30px) rgba(105, 200, 255, calc(.18 + var(--kick) * .25)); }
+.mark span { display: inline-block; animation: letterIn var(--d-4) var(--ease-out) both; animation-delay: calc(.25s + var(--i) * 55ms);
+  background: linear-gradient(180deg, #ffffff 35%, #b9cdf4 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.status { margin: clamp(14px, 2vw, 22px) 0 0; font: 400 clamp(.78rem, 1.15vw, 1.08rem)/1.4 var(--f-ui); letter-spacing: var(--track-ultra); text-transform: uppercase; color: var(--soft); }
+.hero-lede { margin: clamp(22px, 3.2vw, 40px) 0 0; max-width: 31ch; font-size: clamp(1.02rem, 1.4vw, 1.22rem); line-height: 1.6; color: #c3cee2; }
+.hero-cta { margin-top: clamp(26px, 3.6vw, 44px); display: flex; align-items: center; gap: var(--s-5); cursor: pointer; background: none; border: 0; padding: 0; text-align: left; }
+.hero-cta .btn-circle { position: relative; }
+.hero-cta .btn-circle::after { content: ""; position: absolute; inset: -1.5px; border-radius: 50%; border: 1.5px solid var(--cyan); opacity: calc(var(--kick) * .9); transform: scale(calc(1 + var(--kick) * .22)); pointer-events: none; }
+.hero-cta:hover .btn-circle { background: var(--blue); border-color: var(--blue); }
+.hero-cta b { font: 600 var(--fs-sm)/1.3 var(--f-ui); letter-spacing: .2em; text-transform: uppercase; display: grid; gap: 4px; }
+.hero-cta small { font: 500 var(--fs-xs)/1 var(--f-ui); letter-spacing: .14em; color: var(--ink-2); }
+.hero-now { grid-column: 9 / span 4; grid-row: 1; align-self: start; justify-self: end; width: min(100%, 330px); margin-top: clamp(12px, 5vh, 64px); display: grid; gap: var(--s-4); text-align: center; }
+.now-art { position: relative; border: 0; padding: 0; background: none; cursor: pointer; border-radius: var(--r-lg);
+  transform: translate3d(0, calc(var(--kick) * -4px), 0) scale(calc(1 + var(--kick) * .012)); transition: transform .12s linear; }
+.now-art img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-lg); position: relative; z-index: 1; box-shadow: 0 0 0 1px rgba(105, 200, 255, .55), var(--sh-deep); }
+.now-art::before { content: ""; position: absolute; inset: 0; border-radius: var(--r-lg); box-shadow: 0 0 60px 6px rgba(57, 123, 255, .55), 0 0 18px rgba(105, 200, 255, .5); opacity: calc(.45 + var(--kick) * .55); will-change: opacity; }
+.now-cap { display: grid; gap: 6px; }
+.now-cap .eyebrow { color: var(--ink-2); letter-spacing: .3em; }
+.is-live .now-cap .eyebrow { color: var(--cyan); }
+.now-cap b { font: 500 1.4rem/1.2 var(--f-ui); }
+.now-cap span { font-size: var(--fs-sm); color: var(--ink-2); }
+.hero-foot { grid-column: 1 / -1; grid-row: 2; display: flex; align-items: flex-end; justify-content: space-between; gap: var(--s-5); padding-top: var(--s-6); }
+.hero-foot .left { display: grid; gap: var(--s-4); justify-items: start; }
+#heroEq { display: none; }
+.hero-meta { font: 500 var(--fs-xs)/1.6 var(--f-ui); letter-spacing: .2em; text-transform: uppercase; color: var(--ink-2); text-align: right; }
+.hero-meta b { color: var(--ink); font-weight: 600; }
+
+[data-enter] { animation: enterUp var(--d-4) var(--ease-out) both; animation-delay: calc(.35s + var(--e, 0) * 110ms); }
+@keyframes enterUp { from { opacity: 0; transform: translate3d(0, 22px, 0); } }
+@keyframes letterIn { from { opacity: 0; transform: translate3d(0, .35em, 0); } }
+@keyframes fadeIn { from { opacity: 0; } }
+@keyframes artIn { from { opacity: 0; transform: translate3d(0, 26px, 0) scale(.96); } }
+.hero-now[data-enter] { animation-name: artIn; }
+
+/* ---------- новый релиз ---------- */
+.featured .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.feat-art { position: relative; border: 0; padding: 0; background: none; cursor: pointer; border-radius: var(--r-lg); max-width: 560px; width: 100%; }
+.feat-art::before { content: ""; position: absolute; inset: 8%; border-radius: 50%; background: radial-gradient(circle, rgba(57, 123, 255, .5), transparent 70%); filter: blur(30px); opacity: calc(.4 + var(--kick) * .5); z-index: 0; will-change: opacity; }
+.feat-art img { position: relative; z-index: 1; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-lg); box-shadow: 0 0 0 1px var(--line-2), var(--sh-deep);
+  transition: transform var(--d-3) var(--ease-out); }
+.feat-art:hover img { transform: scale(1.012); }
+.feat-body { display: grid; gap: var(--s-5); min-width: 0; }
+.feat-title { margin: 0; font: 300 clamp(2.8rem, 7vw, 6.2rem)/.95 var(--f-ui); letter-spacing: -.01em; overflow-wrap: anywhere; }
+.chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.chip { font: 500 var(--fs-xs)/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: var(--r-pill); border: 1px solid var(--line-2); color: var(--soft); font-variant-numeric: tabular-nums; }
+.feat-text { margin: 0; color: var(--ink-2); max-width: 46ch; }
+.feat-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+#featEq { width: 100%; height: 120px; display: block; }
+
+/* ---------- карточки релизов ---------- */
+.rel { display: grid; gap: var(--s-3); align-content: start; text-align: left; background: none; border: 0; padding: 0; cursor: pointer; min-width: 0; }
+.rel-art { position: relative; aspect-ratio: 1; border-radius: var(--r-md); overflow: hidden; background: var(--surface); box-shadow: 0 0 0 1px var(--line);
+  transition: box-shadow var(--d-3) var(--ease-out), transform var(--d-3) var(--ease-out); }
+.rel-art img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out), filter var(--d-3); }
+.rel-btn { position: absolute; right: 12px; bottom: 12px; width: 46px; height: 46px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center;
+  box-shadow: 0 10px 24px -8px rgba(0, 0, 0, .7); opacity: 0; transform: translate3d(0, 8px, 0) scale(.88); transition: opacity var(--d-2) var(--ease-out), transform var(--d-2) var(--ease-out); }
+.rel-btn .i { width: 18px; height: 18px; }
+.rel:hover .rel-art, .rel:focus-visible .rel-art { transform: translate3d(0, -4px, 0); box-shadow: 0 0 0 1px rgba(105, 200, 255, .45), 0 26px 50px -26px rgba(57, 123, 255, .75); }
+.rel:hover .rel-art img, .rel:focus-visible .rel-art img { transform: scale(1.045); filter: brightness(1.08) saturate(1.05); }
+.rel:hover .rel-btn, .rel:focus-visible .rel-btn, .rel.is-current .rel-btn { opacity: 1; transform: none; }
+.rel:focus-visible { outline: none; }
+.rel:focus-visible .rel-art { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.rel.is-current .rel-art { box-shadow: 0 0 0 1.5px var(--cyan), 0 0 34px -4px rgba(57, 123, 255, .7); }
+.rel-meta { display: grid; gap: 3px; min-width: 0; }
+.rel-meta b { font: 500 .98rem/1.3 var(--f-ui); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: flex; align-items: center; gap: 8px; }
+.rel-meta b .eqi { flex: none; }
+.rel:not(.is-current) .eqi { display: none; }
+.rel-meta span { font-size: .8rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+@media (hover: none) { .rel-btn { opacity: 1; transform: none; width: 40px; height: 40px; right: 10px; bottom: 10px; background: rgba(5, 9, 20, .72); box-shadow: inset 0 0 0 1px var(--line-2); } .rel.is-current .rel-btn { background: var(--blue); } }
+
+.latest-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(16px, 2.2vw, 28px); }
+
+/* ---------- популярное ---------- */
+.top { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 4vw, 64px); }
+.trk { width: 100%; display: grid; grid-template-columns: 2.2em 52px minmax(0, 1fr) auto 3.2em; align-items: center; gap: var(--s-4);
+  padding: 12px 10px; border: 0; border-bottom: 1px solid var(--line); background: none; cursor: pointer; text-align: left; border-radius: 0; transition: background var(--d-2); }
+.trk:hover { background: rgba(140, 174, 255, .05); }
+.trk .n { font: 500 var(--fs-sm)/1 var(--f-ui); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.trk .art { position: relative; width: 52px; height: 52px; border-radius: var(--r-sm); overflow: hidden; }
+.trk .art img { width: 100%; height: 100%; object-fit: cover; }
+.trk .art .i { position: absolute; inset: 0; margin: auto; width: 20px; height: 20px; color: #fff; opacity: 0; transition: opacity var(--d-2); filter: drop-shadow(0 1px 4px rgba(0, 0, 0, .7)); }
+.trk:hover .art .i { opacity: 1; }
+.trk .t { display: grid; gap: 3px; min-width: 0; }
+.trk .t b { font: 500 1rem/1.25 var(--f-ui); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trk .t small { font-size: .8rem; color: var(--ink-2); }
+.trk .d { font-size: var(--fs-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; text-align: right; }
+.trk .eqi { opacity: 0; }
+.trk.is-current { background: linear-gradient(90deg, rgba(57, 123, 255, .14), transparent 80%); }
+.trk.is-current .n { color: var(--cyan); }
+.trk.is-current .eqi { opacity: 1; }
+.trk.is-current .t b { color: #fff; }
+
+/* ---------- дискография ---------- */
+.tools { display: grid; grid-template-columns: minmax(220px, 1fr) repeat(3, auto) auto; gap: var(--s-3); align-items: center; margin-bottom: var(--s-5); }
+.tools label { display: block; min-width: 0; }
+.tools .sel { width: 100%; }
+.search { position: relative; }
+.search .i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--ink-2); pointer-events: none; }
+.field, .sel {
+  height: 46px; border-radius: var(--r-md); border: 1px solid var(--line); background-color: rgba(13, 27, 48, .78); color: var(--ink);
+  font: 500 var(--fs-sm)/1 var(--f-ui); transition: border-color var(--d-2), background-color var(--d-2);
+}
+.field { width: 100%; padding: 0 14px 0 42px; }
+.field::placeholder { color: var(--ink-3); }
+.field::-webkit-search-cancel-button { filter: invert(.6); }
+.sel { appearance: none; -webkit-appearance: none; padding: 0 38px 0 14px; cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238d9cb3' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; background-size: 16px; }
+.sel option { background: var(--surface); color: var(--ink); }
+.field:hover, .sel:hover { border-color: var(--line-2); }
+.field:focus, .sel:focus { outline: none; border-color: var(--cyan); background-color: rgba(16, 34, 58, .95); }
+.views { display: inline-flex; border: 1px solid var(--line); border-radius: var(--r-md); padding: 3px; gap: 2px; height: 46px; }
+.views button { width: 38px; border: 0; background: none; border-radius: 9px; color: var(--ink-2); display: grid; place-items: center; cursor: pointer; }
+.views button[aria-pressed="true"] { background: var(--surface-2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line-2); }
+.views .i { width: 18px; height: 18px; }
+.disco-status { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s-3); margin-bottom: var(--s-6); font-size: var(--fs-sm); color: var(--ink-2); min-height: 32px; }
+.disco-status b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+.reset { border: 0; background: none; color: var(--cyan); cursor: pointer; font: 600 var(--fs-xs)/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase; padding: 8px 0; }
+.reset:hover { color: var(--ink); }
+.disco-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: clamp(22px, 2.4vw, 32px) clamp(16px, 2vw, 24px); }
+.disco-list { display: grid; }
+.lrow { display: grid; grid-template-columns: 56px minmax(0, 1.6fr) minmax(0, .7fr) minmax(0, .8fr) 3.4em auto; align-items: center; gap: var(--s-4);
+  padding: 10px 8px; border-bottom: 1px solid var(--line); background: none; border-left: 0; border-right: 0; border-top: 0; text-align: left; cursor: pointer; width: 100%; transition: background var(--d-2); }
+.lrow:hover { background: rgba(140, 174, 255, .05); }
+.lrow img { width: 56px; height: 56px; border-radius: var(--r-sm); object-fit: cover; }
+.lrow .t { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.lrow .t b { font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lrow .c { font-size: var(--fs-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.lrow .eqi { opacity: 0; }
+.lrow.is-current { background: linear-gradient(90deg, rgba(57, 123, 255, .14), transparent 80%); }
+.lrow.is-current .eqi { opacity: 1; }
+.lrow .ext { color: var(--ink-2); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; }
+.lrow .ext:hover { color: var(--ink); background: rgba(140, 174, 255, .1); }
+.empty { padding: 56px 0; text-align: center; color: var(--ink-2); display: grid; gap: 12px; justify-items: center; }
+.empty b { color: var(--ink); font-weight: 500; font-size: 1.1rem; }
+
+/* ---------- об артисте ---------- */
+.about .wrap { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
+.portrait { position: relative; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 4 / 5; max-width: 480px;
+  box-shadow: 0 0 0 1px rgba(105, 200, 255, .32), 0 0 70px -18px rgba(57, 123, 255, .55), var(--sh-deep); }
+.portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: contrast(1.05) saturate(1.04) brightness(.97); }
+/* цвет фото не трогаем: только холодный свет сверху, мягкая виньетка и уход в фон страницы снизу */
+.portrait::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(110% 70% at 70% -10%, rgba(105, 200, 255, .2), transparent 60%), radial-gradient(140% 100% at 50% 45%, transparent 60%, rgba(5, 9, 20, .45)); }
+.portrait::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, transparent 62%, rgba(5, 9, 20, .82)); }
+.portrait figcaption { position: absolute; z-index: 2; left: 20px; bottom: 18px; font: 600 var(--fs-xs)/1 var(--f-ui); letter-spacing: .22em; text-transform: uppercase; color: var(--soft); }
+.about-body { display: grid; gap: var(--s-5); min-width: 0; }
+.about-body .h2 { font-family: var(--f-mark); font-weight: 400; letter-spacing: .2em; text-transform: none; }
+.about-body p { margin: 0; color: #c3cee2; max-width: 52ch; font-size: var(--fs-lg); line-height: 1.7; }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); margin: 0; padding: var(--s-5) 0; border-block: 1px solid var(--line); }
+.facts div { display: grid; gap: 6px; min-width: 0; }
+.facts dt { font: 600 .66rem/1.3 var(--f-ui); letter-spacing: .18em; text-transform: uppercase; color: var(--ink-3); }
+.facts dd { margin: 0; font: 300 clamp(1.3rem, 2.2vw, 1.85rem)/1.1 var(--f-ui); font-variant-numeric: tabular-nums; }
+.facts dd small { display: block; font-size: .7rem; color: var(--ink-3); font-weight: 400; margin-top: 4px; letter-spacing: .02em; }
+.tl { display: grid; gap: var(--s-3); }
+.tl-head { display: flex; justify-content: space-between; gap: 12px; font-size: var(--fs-sm); color: var(--ink-2); }
+.tl-bars { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: 8px; align-items: end; height: 150px; margin-top: 22px; }
+.tl-bar { display: grid; grid-template-rows: 1fr auto; gap: 8px; height: 100%; border: 0; background: none; padding: 0; cursor: pointer; color: var(--ink-2); }
+.tl-bar[disabled] { cursor: default; }
+.tl-col { align-self: end; position: relative; border-radius: 6px 6px 2px 2px; background: linear-gradient(180deg, var(--cyan), var(--blue)); min-height: 3px; transition: filter var(--d-2), transform var(--d-2) var(--ease-out); transform-origin: bottom; }
+.tl-bar[disabled] .tl-col { background: var(--line-2); }
+.tl-col span { position: absolute; left: 50%; bottom: calc(100% + 6px); transform: translateX(-50%); font: 600 .78rem/1 var(--f-ui); color: var(--ink); font-variant-numeric: tabular-nums; }
+.tl-bar:not([disabled]):hover .tl-col { filter: brightness(1.2); transform: scaleY(1.03); }
+.tl-bar small { font: 500 .74rem/1 var(--f-ui); font-variant-numeric: tabular-nums; }
+
+/* ---------- где слушать ---------- */
+.listen { overflow: hidden; padding-bottom: var(--s-8); }
+.listen .stage { position: relative; isolation: isolate; }
+.ring { position: absolute; z-index: -1; left: 50%; top: 46%; width: min(86vw, 760px); aspect-ratio: 1; border-radius: 50%; transform: translate(-50%, -50%);
+  border: 2px solid rgba(160, 210, 255, .9); box-shadow: 0 0 26px rgba(57, 123, 255, .75), inset 0 0 26px rgba(57, 123, 255, .45), 0 0 130px rgba(57, 123, 255, .3);
+  opacity: calc(.32 + var(--kick) * .4); will-change: opacity; pointer-events: none; }
+.horizon { position: absolute; z-index: -1; left: 0; right: 0; top: calc(46% + min(43vw, 380px)); height: 1px; background: linear-gradient(90deg, transparent, rgba(105, 200, 255, .6), transparent); pointer-events: none; }
+.listen .sec-head { justify-content: center; text-align: center; }
+.listen .sec-head > div { justify-items: center; }
+.plats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-4); }
+.plat {
+  display: grid; align-content: space-between; gap: var(--s-6); min-height: 170px; padding: var(--s-5); border-radius: var(--r-lg); min-width: 0;
+  background: linear-gradient(180deg, rgba(16, 34, 58, .86), rgba(8, 20, 38, .9)); box-shadow: inset 0 0 0 1px var(--line);
+  transition: transform var(--d-3) var(--ease-out), box-shadow var(--d-3);
+}
+.plat:hover { transform: translate3d(0, -4px, 0); box-shadow: inset 0 0 0 1px rgba(105, 200, 255, .5), 0 24px 50px -28px rgba(57, 123, 255, .8); }
+.plat .top-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.plat .k { font: 600 .66rem/1 var(--f-ui); letter-spacing: .2em; text-transform: uppercase; color: var(--cyan); }
+.plat .i { width: 18px; height: 18px; color: var(--ink-2); transition: transform var(--d-2) var(--ease-out), color var(--d-2); }
+.plat:hover .i { transform: translate(3px, -3px); color: var(--ink); }
+.plat b { display: block; font: 500 1.3rem/1.2 var(--f-ui); }
+.plat p { margin: 6px 0 0; font-size: var(--fs-sm); color: var(--ink-2); }
+.plat-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.plat-links a { font: 600 .68rem/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; padding: 9px 12px; border-radius: var(--r-pill); border: 1px solid var(--line-2); color: var(--soft); transition: color var(--d-1), border-color var(--d-1), background var(--d-1); }
+.plat-links a:hover { color: var(--ink); border-color: var(--cyan); background: rgba(57, 123, 255, .14); }
+.plat.main { grid-row: span 2; background: linear-gradient(160deg, rgba(57, 123, 255, .34), rgba(13, 27, 48, .92) 60%); }
+.plat.main b { font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 400; }
+.plat.main p { font-size: var(--fs-md); max-width: 30ch; }
+
+/* ---------- подвал ---------- */
+.ftr { position: relative; margin-top: var(--sec); border-top: 1px solid var(--line); background: linear-gradient(180deg, rgba(8, 20, 38, .6), var(--bg)); overflow: hidden; }
+.ftr .wrap { padding-block: clamp(48px, 7vw, 88px) 28px; display: grid; gap: clamp(36px, 5vw, 64px); }
+.ftr-cols { display: grid; grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr)); gap: var(--s-6); }
+.ftr-cols h3 { margin: 0 0 14px; font: 600 var(--fs-xs)/1 var(--f-ui); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--ink-3); }
+.ftr-cols ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.ftr-cols a { color: var(--soft); font-size: var(--fs-sm); transition: color var(--d-1); }
+.ftr-cols a:hover { color: var(--ink); }
+.ftr-about p { margin: 0; color: var(--ink-2); max-width: 36ch; font-size: var(--fs-sm); }
+.ftr-donate { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 11px 18px; border-radius: var(--r-pill); border: 1px solid var(--line-2); font: 600 .72rem/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase; transition: border-color var(--d-2), background var(--d-2); }
+.ftr-donate .i { width: 16px; height: 16px; color: var(--cyan); }
+.ftr-donate:hover { border-color: var(--cyan); background: rgba(57, 123, 255, .16); }
+.ftr-mark { font: 400 clamp(2.6rem, 11.5vw, 10.5rem)/.9 var(--f-mark); letter-spacing: .12em; margin-right: -.12em; white-space: nowrap; text-align: center;
+  background: linear-gradient(180deg, rgba(140, 174, 255, .22), rgba(140, 174, 255, .02)); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; overflow: hidden; }
+.ftr-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .78rem; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 22px; }
+.ftr-base button { border: 0; background: none; color: var(--soft); cursor: pointer; font: 600 .72rem/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; }
+.ftr-base button .i { width: 16px; height: 16px; transform: rotate(180deg); }
+
+/* ---------- плеер ---------- */
+.player { position: fixed; left: 0; right: 0; bottom: 0; z-index: 25; padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: linear-gradient(180deg, rgba(10, 22, 42, .95), rgba(5, 11, 24, .97)); border-top: 1px solid var(--line-2); }
+.p-seek { position: absolute; left: 0; right: 0; top: -7px; height: 14px; margin: 0; width: 100%; background: transparent; cursor: pointer; -webkit-appearance: none; appearance: none; z-index: 2; --p: 0%; }
+.p-seek::-webkit-slider-runnable-track { height: 3px; background: linear-gradient(90deg, var(--cyan) 0, var(--blue) var(--p), rgba(140, 174, 255, .16) var(--p)); }
+.p-seek::-moz-range-track { height: 3px; background: rgba(140, 174, 255, .16); }
+.p-seek::-moz-range-progress { height: 3px; background: var(--blue); }
+.p-seek::-webkit-slider-thumb { -webkit-appearance: none; width: 13px; height: 13px; border-radius: 50%; background: #fff; margin-top: -5px; box-shadow: 0 0 0 4px rgba(57, 123, 255, .35); opacity: 0; transition: opacity var(--d-1); }
+.p-seek::-moz-range-thumb { width: 13px; height: 13px; border: 0; border-radius: 50%; background: #fff; opacity: 0; }
+.player:hover .p-seek::-webkit-slider-thumb, .p-seek:focus-visible::-webkit-slider-thumb { opacity: 1; }
+.player:hover .p-seek::-moz-range-thumb { opacity: 1; }
+.p-seek:focus-visible { outline: none; }
+.p-in { height: var(--player-h); display: grid; grid-template-columns: minmax(0, 1.25fr) auto minmax(0, 1fr) auto; align-items: center; gap: var(--s-5); }
+.p-track { display: flex; align-items: center; gap: var(--s-4); min-width: 0; border: 0; background: none; padding: 0; text-align: left; cursor: default; }
+.p-track img { width: 54px; height: 54px; border-radius: var(--r-sm); object-fit: cover; box-shadow: 0 0 0 1px var(--line-2); flex: none; }
+.p-tt { display: grid; gap: 3px; min-width: 0; }
+.p-tt b { font: 600 .98rem/1.2 var(--f-ui); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.p-tt small { font-size: .78rem; color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.p-ctl { display: flex; align-items: center; gap: 6px; }
+.p-ctl .icon-btn { position: relative; }
+.p-ctl .icon-btn[aria-pressed="true"]::after { content: ""; position: absolute; bottom: 3px; left: 50%; width: 4px; height: 4px; margin-left: -2px; border-radius: 50%; background: var(--cyan); }
+.p-play { width: 50px; height: 50px; border-radius: 50%; border: 1.5px solid rgba(243, 246, 252, .8); background: none; color: var(--ink); display: grid; place-items: center; cursor: pointer; margin: 0 6px;
+  transition: background var(--d-2), border-color var(--d-2), transform var(--d-2) var(--ease-out); }
+.p-play:hover { background: var(--blue); border-color: var(--blue); transform: scale(1.05); }
+.p-play .i { width: 20px; height: 20px; }
+.p-play { position: relative; }
+.p-play.loading .i { opacity: .4; }
+.p-play.loading::before { content: ""; position: absolute; inset: -3px; border-radius: 50%; border: 2px solid transparent; border-top-color: var(--cyan); border-right-color: var(--cyan); animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.p-mid { display: flex; align-items: center; gap: var(--s-4); min-width: 0; justify-content: center; }
+#pEq { width: 160px; height: 38px; flex: none; }
+.p-time { font-size: .8rem; color: var(--ink-2); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.p-time b { color: var(--ink); font-weight: 500; }
+.p-right { display: flex; align-items: center; gap: 4px; justify-content: flex-end; }
+.p-vol { display: flex; align-items: center; gap: 2px; }
+#vol { width: 92px; -webkit-appearance: none; appearance: none; height: 20px; background: transparent; cursor: pointer; --v: 80%; }
+#vol::-webkit-slider-runnable-track { height: 3px; border-radius: 2px; background: linear-gradient(90deg, var(--ink) var(--v), rgba(140, 174, 255, .22) var(--v)); }
+#vol::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%; background: #fff; margin-top: -4.5px; }
+#vol::-moz-range-track { height: 3px; background: rgba(140, 174, 255, .22); }
+#vol::-moz-range-progress { height: 3px; background: var(--ink); }
+#vol::-moz-range-thumb { width: 12px; height: 12px; border: 0; border-radius: 50%; background: #fff; }
+.p-links { display: flex; gap: 4px; margin-left: 4px; }
+.p-links a { font: 600 .68rem/1 var(--f-ui); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); padding: 9px 10px; border-radius: var(--r-pill); border: 1px solid var(--line); transition: color var(--d-1), border-color var(--d-1); }
+.p-links a:hover { color: var(--ink); border-color: var(--line-2); }
+.p-sheet-head, .p-sheet-art, .p-sheet-time { display: none; }
+
+/* очередь */
+.queue { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(var(--player-h) + env(safe-area-inset-bottom, 0px) + 12px); z-index: 26;
+  width: min(380px, calc(100vw - 32px)); max-height: min(560px, calc(100svh - var(--player-h) - var(--hdr-h) - 40px)); display: grid; grid-template-rows: auto 1fr;
+  background: var(--surface); border-radius: var(--r-lg); box-shadow: 0 0 0 1px var(--line-2), 0 30px 80px -20px rgba(0, 0, 0, .9); overflow: hidden; animation: enterUp var(--d-2) var(--ease-out) both; }
+.q-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 12px 12px 20px; border-bottom: 1px solid var(--line); }
+.q-head b { font: 600 var(--fs-sm)/1.2 var(--f-ui); letter-spacing: .14em; text-transform: uppercase; }
+.q-head small { display: block; font-size: .75rem; color: var(--ink-2); letter-spacing: 0; text-transform: none; font-weight: 400; margin-top: 4px; }
+.q-list { overflow-y: auto; padding: 6px; overscroll-behavior: contain; }
+.q-row { width: 100%; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 8px 10px; border: 0; background: none; border-radius: var(--r-sm); cursor: pointer; text-align: left; }
+.q-row:hover { background: rgba(140, 174, 255, .07); }
+.q-row img { width: 40px; height: 40px; border-radius: 6px; object-fit: cover; }
+.q-row b { font-weight: 500; font-size: .92rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.q-row small { color: var(--ink-2); font-size: .75rem; }
+.q-row .eqi { opacity: 0; }
+.q-row.is-current { background: rgba(57, 123, 255, .16); }
+.q-row.is-current .eqi { opacity: 1; }
+
+/* уведомление */
+.toast { position: fixed; left: 50%; bottom: calc(var(--player-h) + env(safe-area-inset-bottom, 0px) + 16px); z-index: 45; transform: translateX(-50%);
+  max-width: min(520px, calc(100vw - 32px)); padding: 14px 18px; border-radius: var(--r-md); background: var(--surface-2); box-shadow: 0 0 0 1px var(--line-2), 0 20px 50px -20px #000;
+  font-size: var(--fs-sm); display: flex; gap: 14px; align-items: center; }
+.toast a { color: var(--cyan); font-weight: 600; white-space: nowrap; }
+.toast button { border: 0; background: none; color: var(--ink-2); cursor: pointer; padding: 4px; }
+
+/* ---------- появление секций при прокрутке ---------- */
+@supports (animation-timeline: view()) {
+  .reveal { animation: rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+  @keyframes rise { from { opacity: .2; transform: translate3d(0, 36px, 0); } to { opacity: 1; transform: none; } }
+}
+
+/* ---------- адаптив ---------- */
+@media (min-width: 761px) and (max-height: 820px) {
+  .hero-now { width: min(100%, 260px); margin-top: 0; }
+  .hero-lede { margin-top: 18px; }
+  .hero-cta { margin-top: 22px; }
+  .hero-foot { padding-top: 14px; }
+}
+@media (max-width: 1180px) {
+  .p-links { display: none; }
+  #pEq { width: 110px; }
+  .tools { grid-template-columns: minmax(0, 1fr) repeat(3, minmax(0, auto)) auto; }
+}
+@media (max-width: 1024px) {
+  .hero-copy { grid-column: 1 / span 7; }
+  .hero-now { grid-column: 8 / span 5; width: min(100%, 290px); }
+  .latest-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .plats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .plat.main { grid-column: span 2; grid-row: auto; min-height: 200px; }
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p-vol { display: none; }
+  .tools { grid-template-columns: repeat(3, minmax(0, 1fr)) auto; }
+  .tools .search { grid-column: 1 / -1; }
+}
+@media (max-width: 860px) {
+  .nav { display: none; }
+  #menuBtn { display: grid; }
+  .donate { width: 40px; height: 40px; padding: 0; justify-content: center; margin-right: 2px; }
+  .donate span { display: none; }
+  .featured .wrap, .about .wrap { grid-template-columns: minmax(0, 1fr); }
+  .feat-art { max-width: 520px; }
+  .portrait { max-width: 420px; aspect-ratio: 1; }
+  .top { grid-template-columns: minmax(0, 1fr); }
+  .latest-row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: minmax(220px, 40%); overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px;
+    margin-inline: calc(-1 * max(clamp(20px, 4vw, 56px), env(safe-area-inset-left, 0px))); padding-inline: max(clamp(20px, 4vw, 56px), env(safe-area-inset-left, 0px)); scroll-padding-inline: max(clamp(20px, 4vw, 56px), env(safe-area-inset-left, 0px)); scrollbar-width: none; }
+  .latest-row::-webkit-scrollbar { display: none; }
+  .latest-row .rel { scroll-snap-align: start; }
+  .lrow { grid-template-columns: 52px minmax(0, 1fr) auto 3.2em; }
+  .lrow .c.g, .lrow .ext { display: none; }
+  .ftr-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ftr-about { grid-column: 1 / -1; }
+  /* плеер: компактная строка + раскрываемый лист */
+  :root { --player-h: 72px; }
+  .p-in { grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-3); }
+  .p-track { cursor: pointer; }
+  .p-track img { width: 46px; height: 46px; }
+  .p-ctl #pShuffle, .p-ctl #pRepeat, .p-ctl #pPrev, .p-mid, .p-right { display: none; }
+  .p-play { width: 46px; height: 46px; margin: 0 2px; }
+  .player.open { top: 0; display: grid; align-content: start; padding-top: env(safe-area-inset-top, 0px); background: linear-gradient(180deg, #0b1a33, var(--bg) 70%); border-top: 0; overflow-y: auto; }
+  .player.open .p-seek { position: static; height: 24px; }
+  .player.open .p-in { height: auto; grid-template-columns: minmax(0, 1fr); padding-block: 8px 28px; gap: var(--s-5); }
+  .player.open .p-sheet-head { display: flex; justify-content: space-between; align-items: center; height: 56px; }
+  .player.open .p-sheet-head span { font: 600 var(--fs-xs)/1 var(--f-ui); letter-spacing: .26em; text-transform: uppercase; color: var(--ink-2); }
+  .player.open .p-sheet-art { display: block; width: min(100%, 420px); justify-self: center; aspect-ratio: 1; object-fit: cover; border-radius: var(--r-lg); box-shadow: 0 0 0 1px rgba(105, 200, 255, .45), 0 0 60px rgba(57, 123, 255, .35); }
+  .player.open .p-track { justify-content: center; text-align: center; cursor: default; }
+  .player.open .p-track img { display: none; }
+  .player.open .p-tt b { font-size: 1.5rem; white-space: normal; }
+  .player.open .p-tt small { font-size: .9rem; }
+  .player.open .p-sheet-time { display: flex; justify-content: space-between; font-size: .8rem; color: var(--ink-2); font-variant-numeric: tabular-nums; margin-top: -14px; }
+  .player.open .p-ctl { justify-content: space-between; }
+  .player.open .p-ctl #pShuffle, .player.open .p-ctl #pRepeat, .player.open .p-ctl #pPrev { display: grid; }
+  .player.open .p-play { width: 72px; height: 72px; }
+  .player.open .p-play .i { width: 28px; height: 28px; }
+  .player.open .p-right { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .player.open .p-links { display: flex; }
+  .player.open .p-mid { display: flex; justify-content: center; }
+  .player.open .p-mid .p-time { display: none; }
+  .player.open #pEq { width: 220px; height: 40px; }
+  .queue { right: 16px; left: 16px; width: auto; }
+}
+@media (max-width: 760px) {
+  .hero { min-height: 0; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto; text-align: center; padding-block: calc(var(--hdr-h) + 40px) 28px; row-gap: 0; }
+  .hero-copy, .hero-now, .hero-foot { grid-column: 1; grid-row: auto; }
+  .hero-copy { justify-items: center; min-height: 52svh; align-content: center; }
+  .mark { font-size: clamp(1.9rem, 10.6vw, 3.4rem); letter-spacing: .13em; margin-right: -.13em; }
+  .status { letter-spacing: .38em; margin-right: -.38em; font-size: .72rem; }
+  .hero-lede { margin-inline: auto; font-size: 1rem; }
+  .hero-cta { justify-content: center; }
+  .hero-cta .btn-circle { width: 58px; height: 58px; }
+  .hero-now { justify-self: stretch; width: 100%; margin-top: 28px; grid-template-columns: 76px minmax(0, 1fr); align-items: center; text-align: left; gap: 16px;
+    padding: 12px; border-radius: var(--r-lg); background: rgba(8, 20, 38, .72); box-shadow: inset 0 0 0 1px var(--line); }
+  .now-art img, .now-art::before { border-radius: var(--r-md); }
+  .now-cap b { font-size: 1.1rem; }
+  .hero-foot { justify-content: center; padding-top: 20px; }
+  .hero-foot .left { justify-items: center; }
+  #heroEq, .hero-meta { display: none; }
+  .feat-title { font-size: clamp(2.6rem, 14vw, 4rem); }
+  .feat-actions .btn { flex: 1 1 auto; }
+  .tools { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tools .views { justify-self: end; }
+  .disco-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 14px; }
+  .latest-row { grid-auto-columns: 72%; }
+  .trk { grid-template-columns: 1.6em 46px minmax(0, 1fr) auto; gap: 12px; padding-inline: 4px; }
+  .trk .art { width: 46px; height: 46px; }
+  .trk .eqi { display: none; }
+  .trk.is-current .eqi { display: inline-flex; }
+  .trk .d { display: none; }
+  .trk.is-current .d { display: none; }
+  .plats { grid-template-columns: minmax(0, 1fr); }
+  .plat.main { grid-column: auto; grid-row: auto; }
+  .plat { min-height: 0; gap: var(--s-4); }
+  .tl-bars { height: 120px; gap: 5px; }
+  .facts dd { font-size: 1.25rem; }
+  .ring { width: 130vw; top: 40%; }
+  .horizon { display: none; }
+  .ftr-cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 380px) {
+  .tools { grid-template-columns: minmax(0, 1fr); }
+  .tools .views { justify-self: start; }
+  .hero-now { grid-template-columns: 64px minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001s !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .001s !important; }
+  .reveal { animation: none !important; }
+}
+</style>
+
+<!-- иконки -->
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5.2v13.6L19 12z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h3.6v14H7zM13.4 5H17v14h-3.6z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path fill="currentColor" d="M6 5h2.2v14H6zM19 5.4v13.2L9.6 12z"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path fill="currentColor" d="M15.8 5H18v14h-2.2zM5 5.4v13.2L14.4 12z"/></symbol>
+  <symbol id="i-shuffle" viewBox="0 0 24 24"><g class="i-stroke"><path d="M3 7h3.2c2 0 3.3 1 4.4 2.7l2.8 4.6C14.5 16 15.8 17 17.8 17H21"/><path d="M17.8 13.8 21 17l-3.2 3.2"/><path d="M3 17h3.2c1.2 0 2.1-.35 2.9-1"/><path d="M14.4 8c.8-.65 1.8-1 3.4-1H21"/><path d="M17.8 3.8 21 7l-3.2 3.2"/></g></symbol>
+  <symbol id="i-repeat" viewBox="0 0 24 24"><g class="i-stroke"><path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H19"/><path d="M16 3l3 3-3 3"/><path d="M20 13v1.5a3.5 3.5 0 0 1-3.5 3.5H5"/><path d="M8 21l-3-3 3-3"/></g></symbol>
+  <symbol id="i-repeat1" viewBox="0 0 24 24"><g class="i-stroke"><path d="M4 11V9.5A3.5 3.5 0 0 1 7.5 6H19"/><path d="M16 3l3 3-3 3"/><path d="M20 13v1.5a3.5 3.5 0 0 1-3.5 3.5H5"/><path d="M8 21l-3-3 3-3"/><path d="M11 10.8l1.4-.9V14.6"/></g></symbol>
+  <symbol id="i-vol" viewBox="0 0 24 24"><path fill="currentColor" d="M4 9.3h3.6L12.4 5.5v13L7.6 14.7H4z"/><g class="i-stroke"><path d="M15.6 9a4.2 4.2 0 0 1 0 6"/><path d="M18.2 6.4a7.8 7.8 0 0 1 0 11.2"/></g></symbol>
+  <symbol id="i-mute" viewBox="0 0 24 24"><path fill="currentColor" d="M4 9.3h3.6L12.4 5.5v13L7.6 14.7H4z"/><g class="i-stroke"><path d="M16 9.5l5 5M21 9.5l-5 5"/></g></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><g class="i-stroke"><path d="M12 4v11"/><path d="M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19.5h14"/></g></symbol>
+  <symbol id="i-queue" viewBox="0 0 24 24"><g class="i-stroke"><path d="M4 6.5h12M4 11.5h12M4 16.5h7"/></g><path fill="currentColor" d="M15.5 14.2v6.1l4.8-3z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><g class="i-stroke"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></g></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><g class="i-stroke"><path d="M4 8.5h16M4 15.5h16"/></g></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><g class="i-stroke"><path d="M6 6l12 12M18 6 6 18"/></g></symbol>
+  <symbol id="i-arrow-down" viewBox="0 0 24 24"><g class="i-stroke"><path d="M12 4.5v15"/><path d="M6.5 14 12 19.5 17.5 14"/></g></symbol>
+  <symbol id="i-arrow-right" viewBox="0 0 24 24"><g class="i-stroke"><path d="M4.5 12h15"/><path d="M14 6.5 19.5 12 14 17.5"/></g></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><g class="i-stroke"><path d="M7 17 17 7"/><path d="M9 7h8v8"/></g></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g class="i-stroke"><rect x="4.5" y="4.5" width="6" height="6" rx="1.2"/><rect x="13.5" y="4.5" width="6" height="6" rx="1.2"/><rect x="4.5" y="13.5" width="6" height="6" rx="1.2"/><rect x="13.5" y="13.5" width="6" height="6" rx="1.2"/></g></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><g class="i-stroke"><path d="M9 6.5h11M9 12h11M9 17.5h11M4.5 6.5h.01M4.5 12h.01M4.5 17.5h.01"/></g></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><g class="i-stroke"><path d="M12 19.5s-7.2-4.4-7.2-10A4.1 4.1 0 0 1 12 7a4.1 4.1 0 0 1 7.2 2.5c0 5.6-7.2 10-7.2 10z"/></g></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><g class="i-stroke"><path d="M6 9.5l6 6 6-6"/></g></symbol>
+</svg>
+
+<a class="skip" href="#main">Перейти к содержимому</a>
+<div class="atmos" aria-hidden="true"></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Revesane — в начало">REVESANE</a>
+    <nav class="nav" aria-label="Разделы">
+      <a href="#music" data-nav="music">Музыка</a>
+      <a href="#discography" data-nav="discography">Дискография</a>
+      <a href="#about" data-nav="about">Об артисте</a>
+      <a href="#listen" data-nav="listen">Где слушать</a>
+    </nav>
+    <div class="hdr-tools">
+      <a class="donate" href="https://tips.yandex.ru/guest/payment/8870730?wl=yandex_music_dark" target="_blank" rel="noopener" aria-label="Поддержать артиста донатом"><svg class="i"><use href="#i-heart"/></svg><span>Поддержать</span></a>
+      <button class="icon-btn" type="button" id="searchBtn" aria-label="Найти релиз"><svg class="i"><use href="#i-search"/></svg></button>
+      <button class="icon-btn" type="button" id="menuBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="menu"><svg class="i"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Меню" hidden>
+  <div class="wrap top">
+    <span class="logo">REVESANE</span>
+    <button class="icon-btn" type="button" id="menuClose" aria-label="Закрыть меню"><svg class="i"><use href="#i-close"/></svg></button>
+  </div>
+  <nav class="wrap" aria-label="Разделы">
+    <a href="#music">Музыка <svg class="i"><use href="#i-arrow-right"/></svg></a>
+    <a href="#popular">Популярное <svg class="i"><use href="#i-arrow-right"/></svg></a>
+    <a href="#discography">Дискография <svg class="i"><use href="#i-arrow-right"/></svg></a>
+    <a href="#about">Об артисте <svg class="i"><use href="#i-arrow-right"/></svg></a>
+    <a href="#listen">Где слушать <svg class="i"><use href="#i-arrow-right"/></svg></a>
+  </nav>
+  <div class="wrap foot">
+    <a class="menu-donate" href="https://tips.yandex.ru/guest/payment/8870730?wl=yandex_music_dark" target="_blank" rel="noopener"><svg class="i"><use href="#i-heart"/></svg>Поддержать артиста</a>
+    <a href="https://music.yandex.ru/artist/9580812" target="_blank" rel="noopener">Яндекс Музыка</a>
+    <a href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">Apple Music</a>
+    <a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка</a>
+    <a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a>
+  </div>
+</div>
+
+<main id="main">
+  <!-- ===== первый экран ===== -->
+  <section class="hero" id="top" aria-label="Revesane">
+    <canvas id="scene" aria-hidden="true"></canvas>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="mark" id="mark" aria-label="Revesane">REVESANE</h1>
+        <p class="status" data-enter style="--e:4">Electronic music artist</p>
+        <p class="hero-lede" data-enter style="--e:5" id="heroLede">Хаус, электроника и поп. 43 сингла с 2018 года.</p>
+        <button class="hero-cta" type="button" id="heroPlay" data-enter style="--e:6">
+          <span class="btn-circle" aria-hidden="true"><svg class="i"><use href="#i-play"/></svg></span>
+          <b><span id="heroPlayLabel">Слушать новый релиз</span><small id="heroPlaySub">Explosion · 2026</small></b>
+        </button>
+      </div>
+      <div class="hero-now" data-enter style="--e:3" id="heroNow">
+        <button class="now-art" type="button" id="nowArt" aria-label="Играть или поставить на паузу"><img id="nowImg" src="covers/43754801.jpg" alt="" width="400" height="400" fetchpriority="high"></button>
+        <div class="now-cap"><span class="eyebrow">Now playing</span><b id="nowTitle">Explosion</b><span id="nowYear">2026</span></div>
+      </div>
+      <div class="hero-foot" data-enter style="--e:8">
+        <div class="left">
+          <a class="link-arrow" href="#discography"><svg class="i"><use href="#i-arrow-down"/></svg>Смотреть дискографию</a>
+          <canvas id="heroEq" aria-hidden="true"></canvas>
+        </div>
+        <p class="hero-meta" id="heroMeta"><b>43</b> релиза · 2018–2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== новый релиз ===== -->
+  <section class="sec featured" id="music" aria-labelledby="featTitle">
+    <div class="wrap reveal">
+      <button class="feat-art" type="button" id="featArt" data-play="" data-ctx="all" aria-label="Слушать новый релиз"><img id="featImg" src="covers/43754801.jpg" alt="" width="400" height="400" loading="lazy" decoding="async"></button>
+      <div class="feat-body">
+        <span class="eyebrow">Новый релиз · сингл</span>
+        <h2 class="feat-title" id="featTitle">Explosion</h2>
+        <div class="chips" id="featChips"></div>
+        <p class="feat-text" id="featText"></p>
+        <canvas id="featEq" aria-hidden="true"></canvas>
+        <div class="feat-actions">
+          <button class="btn btn-primary" type="button" id="featPlay" data-ctx="all"><svg class="i"><use href="#i-play"/></svg><span>Слушать</span></button>
+          <a class="btn btn-ghost" id="featYa" href="https://music.yandex.ru/artist/9580812" target="_blank" rel="noopener">Яндекс Музыка <svg class="i"><use href="#i-ext"/></svg></a>
+          <a class="btn btn-ghost" id="featAp" href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">Apple Music <svg class="i"><use href="#i-ext"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== последние релизы ===== -->
+  <section class="sec" id="latest" aria-labelledby="latestH">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div><span class="eyebrow">2025–2026</span><h2 class="h2" id="latestH">Последние релизы</h2></div>
+        <a class="link-arrow" href="#discography">Вся дискография <svg class="i"><use href="#i-arrow-right"/></svg></a>
+      </div>
+      <div class="latest-row" id="latestRow"></div>
+    </div>
+  </section>
+
+  <!-- ===== популярное ===== -->
+  <section class="sec" id="popular" aria-labelledby="popH">
+    <div class="wrap reveal">
+      <div class="sec-head">
+        <div><span class="eyebrow">Топ-10</span><h2 class="h2" id="popH">Популярное</h2></div>
+        <span class="sub">По данным Яндекс Музыки, ноябрь 2026</span>
+      </div>
+      <ol class="top" id="topList"></ol>
+    </div>
+  </section>
+
+  <!-- ===== дискография ===== -->
+  <section class="sec" id="discography" aria-labelledby="discoH">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Все релизы</span><h2 class="h2" id="discoH">Дискография</h2></div>
+        <span class="sub" id="discoSub">43 релиза · 2018–2026</span>
+      </div>
+      <div class="tools" role="search">
+        <label class="search"><span class="sr">Поиск по названию</span><svg class="i"><use href="#i-search"/></svg>
+          <input class="field" id="fq" type="search" placeholder="Поиск по названию, году, жанру" autocomplete="off" spellcheck="false"></label>
+        <label><span class="sr">Год</span><select class="sel" id="fy"></select></label>
+        <label><span class="sr">Жанр</span><select class="sel" id="fg"></select></label>
+        <label><span class="sr">Сортировка</span><select class="sel" id="fs">
+          <option value="new">Сначала новые</option><option value="old">Сначала старые</option>
+          <option value="az">По названию</option><option value="long">Сначала длинные</option></select></label>
+        <div class="views" role="group" aria-label="Вид">
+          <button type="button" id="vGrid" aria-pressed="true" aria-label="Сеткой"><svg class="i"><use href="#i-grid"/></svg></button>
+          <button type="button" id="vList" aria-pressed="false" aria-label="Списком"><svg class="i"><use href="#i-list"/></svg></button>
+        </div>
+      </div>
+      <div class="disco-status"><span id="dCount" aria-live="polite"></span><button class="reset" type="button" id="fReset" hidden>Сбросить фильтры</button></div>
+      <div id="disco"></div>
+    </div>
+  </section>
+
+  <!-- ===== об артисте ===== -->
+  <section class="sec about" id="about" aria-labelledby="aboutH">
+    <div class="wrap reveal">
+      <figure class="portrait" style="margin:0"><img src="covers/artist.png" alt="Revesane в студии" width="400" height="400" loading="lazy" decoding="async"><figcaption>Revesane · студия</figcaption></figure>
+      <div class="about-body">
+        <span class="eyebrow">Об артисте</span>
+        <h2 class="h2" id="aboutH">Revesane</h2>
+        <p>Артист и продюсер. С 2018 года выпускает синглы на стыке хауса, электроники и поп-музыки. Почти все релизы выходят на собственном лейбле Revesane, а на обложках — космос, неон, скорость и южное солнце.</p>
+        <dl class="facts" id="facts"></dl>
+        <div class="tl">
+          <div class="tl-head"><span>Релизы по годам</span><span>Нажми на год — откроется дискография</span></div>
+          <div class="tl-bars" id="tl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== где слушать ===== -->
+  <section class="sec listen" id="listen" aria-labelledby="listenH">
+    <div class="wrap stage">
+      <span class="ring" id="ring" aria-hidden="true"></span><span class="horizon" aria-hidden="true"></span>
+      <div class="sec-head reveal">
+        <div><span class="eyebrow">Listen everywhere</span><h2 class="h2" id="listenH">Где слушать</h2><span class="sub">Все релизы Revesane на стриминговых площадках</span></div>
+      </div>
+      <div class="plats reveal">
+        <a class="plat main" href="https://music.yandex.ru/artist/9580812" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>Яндекс Музыка</b><p>Все 43 релиза, популярные треки и «Моя волна». Отсюда же цифры для топа и счётчика слушателей.</p></div>
+        </a>
+        <a class="plat" href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>Apple Music</b><p>Полная дискография в разделе House.</p></div>
+        </a>
+        <a class="plat" href="https://www.deezer.com/artist/14612687" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>Deezer</b><p>Синглы с 2021 года до «Explosion».</p></div>
+        </a>
+        <a class="plat" href="https://listen.tidal.com/search?q=Revesane" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>Tidal</b><p>Треки в качестве без потерь.</p></div>
+        </a>
+        <a class="plat" href="https://music.amazon.com/search/Revesane" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Слушать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>Amazon Music</b><p>Синглы в каталоге Amazon.</p></div>
+        </a>
+        <div class="plat">
+          <div class="top-row"><span class="k">Слушать · новости</span></div>
+          <div><b>ВКонтакте</b><p>Страница артиста в VK Музыке и сообщество с анонсами.</p>
+            <div class="plat-links"><a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка ↗</a><a href="https://vk.ru/revesane" target="_blank" rel="noopener">Сообщество ↗</a></div></div>
+        </div>
+        <a class="plat" href="https://lightaudio.ru/mp3/revesane" target="_blank" rel="noopener">
+          <div class="top-row"><span class="k">Скачать</span><svg class="i"><use href="#i-ext"/></svg></div>
+          <div><b>LightAudio</b><p>Все треки в mp3.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-cols">
+      <div class="ftr-about"><h3>Revesane</h3><p>Электронный музыкант. Хаус, электроника и поп, синглы с 2018 года.</p><a class="ftr-donate" href="https://tips.yandex.ru/guest/payment/8870730?wl=yandex_music_dark" target="_blank" rel="noopener"><svg class="i"><use href="#i-heart"/></svg>Поддержать артиста</a></div>
+      <div><h3>Разделы</h3><ul><li><a href="#music">Новый релиз</a></li><li><a href="#popular">Популярное</a></li><li><a href="#discography">Дискография</a></li><li><a href="#about">Об артисте</a></li></ul></div>
+      <div><h3>Слушать</h3><ul>
+        <li><a href="https://music.yandex.ru/artist/9580812" target="_blank" rel="noopener">Яндекс Музыка</a></li>
+        <li><a href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="https://www.deezer.com/artist/14612687" target="_blank" rel="noopener">Deezer</a></li>
+        <li><a href="https://vk.ru/artist/807661330207661269" target="_blank" rel="noopener">VK Музыка</a></li>
+        <li><a href="https://vk.ru/revesane" target="_blank" rel="noopener">ВКонтакте</a></li></ul></div>
+    </div>
+    <div class="ftr-mark" aria-hidden="true">REVESANE</div>
+    <div class="ftr-base"><span>© 2026 Revesane. Данные о релизах — Яндекс Музыка и Apple Music.</span><button type="button" id="toTop"><svg class="i"><use href="#i-arrow-down"/></svg>Наверх</button></div>
+  </div>
+</footer>
+
+<!-- ===== плеер ===== -->
+<div class="player" id="player" role="region" aria-label="Плеер">
+  <div class="wrap p-in">
+    <div class="p-sheet-head"><span>Сейчас играет</span><button class="icon-btn" type="button" id="pCollapse" aria-label="Свернуть плеер"><svg class="i"><use href="#i-chev"/></svg></button></div>
+    <img class="p-sheet-art" id="pSheetArt" src="covers/43754801.jpg" alt="" width="400" height="400">
+    <button class="p-track" type="button" id="pTrack" aria-label="Открыть плеер">
+      <img id="pCover" src="covers/43754801.jpg" alt="" width="400" height="400">
+      <span class="p-tt"><b id="pTitle">Explosion</b><small id="pMeta">2026 · Revesane</small></span>
+    </button>
+    <input class="p-seek" id="seek" type="range" min="0" max="1000" value="0" step="1" aria-label="Перемотка">
+    <div class="p-sheet-time"><span id="sCur">0:00</span><span id="sDur">0:00</span></div>
+    <div class="p-ctl">
+      <button class="icon-btn" type="button" id="pShuffle" aria-pressed="false" aria-label="Перемешать"><svg class="i"><use href="#i-shuffle"/></svg></button>
+      <button class="icon-btn" type="button" id="pPrev" aria-label="Предыдущий трек"><svg class="i"><use href="#i-prev"/></svg></button>
+      <button class="p-play" type="button" id="pPlay" aria-label="Играть"><svg class="i"><use id="pIcon" href="#i-play"/></svg></button>
+      <button class="icon-btn" type="button" id="pNext" aria-label="Следующий трек"><svg class="i"><use href="#i-next"/></svg></button>
+      <button class="icon-btn" type="button" id="pRepeat" aria-pressed="false" aria-label="Повтор: выключен"><svg class="i"><use id="pRepIcon" href="#i-repeat"/></svg></button>
+    </div>
+    <div class="p-mid"><canvas id="pEq" aria-hidden="true"></canvas><span class="p-time"><b id="tCur">0:00</b> / <span id="tDur">0:00</span></span></div>
+    <div class="p-right">
+      <div class="p-vol">
+        <button class="icon-btn" type="button" id="pMute" aria-label="Выключить звук"><svg class="i"><use id="pVolIcon" href="#i-vol"/></svg></button>
+        <input id="vol" type="range" min="0" max="100" value="80" aria-label="Громкость">
+      </div>
+      <a class="icon-btn" id="pDl" href="https://lightaudio.ru/mp3/revesane" target="_blank" rel="noopener" aria-label="Скачать на LightAudio"><svg class="i"><use href="#i-down"/></svg></a>
+      <button class="icon-btn" type="button" id="pQueue" aria-label="Очередь" aria-expanded="false" aria-controls="queue"><svg class="i"><use href="#i-queue"/></svg></button>
+      <div class="p-links"><a id="pYa" href="https://music.yandex.ru/artist/9580812" target="_blank" rel="noopener">Яндекс</a><a id="pAp" href="https://music.apple.com/artist/1361238360" target="_blank" rel="noopener">Apple</a></div>
+    </div>
+  </div>
+</div>
+<div class="queue" id="queue" role="dialog" aria-label="Очередь воспроизведения" hidden>
+  <div class="q-head"><b>Очередь<small id="qSrc"></small></b><button class="icon-btn" type="button" id="qClose" aria-label="Закрыть очередь"><svg class="i"><use href="#i-close"/></svg></button></div>
+  <div class="q-list" id="qList"></div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<audio id="au" preload="none"></audio>
+
+<script src="data.js"></script>
+<script>window.REVESANE_LOCAL_DL = true; window.REVESANE_AUDIO_Q = "?v=2";</script>
+<script>
+(() => {
+  "use strict";
+  /* ================= данные ================= */
+  const D = window.REVESANE;
+  const R = D.releases.slice().sort((a, b) => b.d.localeCompare(a.d) || b.id - a.id);
+  const byId = new Map(R.map(r => [r.id, r]));
+  const HAS = new Set((D.audio || []).map(String));
+  const has = r => !!r && HAS.has(String(r.tr));
+  const LOCAL_DL = window.REVESANE_LOCAL_DL === true;
+  const GENRE = { house: "Хаус", electronics: "Электроника", pop: "Поп", dance: "Дэнс", dubstep: "Дабстеп", alternative: "Альтернатива" };
+  const gname = g => GENRE[g] || (g ? g[0].toUpperCase() + g.slice(1) : "—");
+  const MON = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+  const $ = id => document.getElementById(id);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = s => { s = Math.max(0, Math.floor(s || 0)); return Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0"); };
+  const dateRu = d => { const [y, m, dd] = d.split("-"); return +dd + " " + MON[+m - 1] + " " + y; };
+  const plural = (n, a, b, c) => { const m10 = n % 10, m100 = n % 100; return n + " " + (m10 === 1 && m100 !== 11 ? a : m10 >= 2 && m10 <= 4 && (m100 < 10 || m100 >= 20) ? b : c); };
+  const ya = r => "https://music.yandex.ru/album/" + r.id + (r.tr ? "/track/" + r.tr : "");
+  const apple = r => r.ap ? "https://music.apple.com/album/" + r.ap : "https://music.apple.com/artist/1361238360";
+  const cov = r => "covers/" + r.id + ".jpg";
+  // index.html дописывает к адресу версию (build.py, AUDIO_VERSION), чтобы после замены mp3 браузер не взял старый файл из кэша
+  const mp3 = r => "audio/" + r.tr + ".mp3" + (window.REVESANE_AUDIO_Q || "");
+  const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const store = { get(k, d) { try { const v = localStorage.getItem("rv." + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+                  set(k, v) { try { localStorage.setItem("rv." + k, JSON.stringify(v)); } catch (e) {} } };
+  const icon = (id, cls = "i") => `<svg class="${cls}" aria-hidden="true"><use href="#${id}"/></svg>`;
+  const EQI = '<span class="eqi" aria-hidden="true"><svg viewBox="0 0 36 14"><path d="M0 7C2.25 1.5 6.75 1.5 9 7S15.75 12.5 18 7S24.75 1.5 27 7S33.75 12.5 36 7"/></svg></span>';
+
+  const LATEST = R[0];
+  const YEARS = [...new Set(R.map(r => r.y))].sort((a, b) => b - a);
+  const yMin = Math.min(...YEARS), yMax = Math.max(...YEARS);
+  const countBy = (k, v) => R.filter(r => r[k] === v).length;
+  const GENRES = [...new Set(R.map(r => r.g))].sort((a, b) => countBy("g", b) - countBy("g", a));
+
+  /* ================= первый экран ================= */
+  $("mark").innerHTML = [..."REVESANE"].map((ch, i) => `<span aria-hidden="true" style="--i:${i}">${ch}</span>`).join("");
+  $("heroLede").textContent = `Хаус, электроника и поп. ${plural(R.length, "сингл", "сингла", "синглов")} с ${yMin} года — от «${R[R.length - 1].t}» до «${LATEST.t}».`;
+  $("heroMeta").innerHTML = `<b>${R.length}</b> ${plural(R.length, "релиз", "релиза", "релизов").replace(/^\d+ /, "")} · ${yMin}–${yMax}`;
+  $("discoSub").textContent = `${plural(R.length, "релиз", "релиза", "релизов")} · ${yMin}–${yMax}`;
+
+  /* ================= новый релиз ================= */
+  $("featArt").dataset.play = LATEST.id; $("featPlay").dataset.play = LATEST.id;
+  $("featImg").src = cov(LATEST); $("featImg").alt = "Обложка «" + LATEST.t + "»";
+  $("featTitle").textContent = LATEST.t;
+  $("featChips").innerHTML = [gname(LATEST.g), LATEST.y, dateRu(LATEST.d), fmt(LATEST.s)].map(c => `<span class="chip">${esc(c)}</span>`).join("");
+  $("featText").textContent = `Сингл вышел ${dateRu(LATEST.d)} года. Слушай здесь, на Яндекс Музыке или в Apple Music.`;
+  $("featYa").href = ya(LATEST); $("featAp").href = apple(LATEST);
+
+  /* ================= карточки ================= */
+  const card = (r, ctx, meta) => `<button class="rel" type="button" data-play="${r.id}" data-ctx="${ctx}" aria-label="Слушать «${esc(r.t)}», ${r.y}">
+      <span class="rel-art"><img src="${cov(r)}" alt="" width="400" height="400" loading="lazy" decoding="async"><span class="rel-btn">${icon("i-play", "i ico")}</span></span>
+      <span class="rel-meta"><b>${EQI}${esc(r.t)}</b><span>${meta}</span></span></button>`;
+  const LATEST_IDS = R.slice(1, 9).map(r => r.id);
+  $("latestRow").innerHTML = LATEST_IDS.map(id => { const r = byId.get(id); return card(r, "latest", `${r.y} · ${gname(r.g)}`); }).join("");
+
+  const POP = D.popular.filter(id => byId.has(id));
+  $("topList").innerHTML = POP.map((id, i) => {
+    const r = byId.get(id);
+    return `<li><button class="trk" type="button" data-play="${r.id}" data-ctx="popular" aria-label="${i + 1}. «${esc(r.t)}», ${r.y}">
+      <span class="n">${String(i + 1).padStart(2, "0")}</span>
+      <span class="art"><img src="${cov(r)}" alt="" width="400" height="400" loading="lazy" decoding="async">${icon("i-play", "i ico")}</span>
+      <span class="t"><b>${esc(r.t)}</b><small>${r.y} · ${gname(r.g)}</small></span>${EQI}<span class="d">${fmt(r.s)}</span></button></li>`;
+  }).join("");
+
+  /* ================= дискография ================= */
+  const F0 = { q: "", year: "all", genre: "all", sort: "new" };
+  const F = Object.assign({}, F0, { view: store.get("view", "grid") });
+  let discoIds = R.map(r => r.id);
+  $("fy").innerHTML = `<option value="all">Все годы</option>` + YEARS.map(y => `<option value="${y}">${y} · ${countBy("y", y)}</option>`).join("");
+  $("fg").innerHTML = `<option value="all">Все жанры</option>` + GENRES.map(g => `<option value="${g}">${gname(g)} · ${countBy("g", g)}</option>`).join("");
+  const norm = s => String(s).toLowerCase().replace(/ё/g, "е").trim();
+  function discoFilter() {
+    const q = norm(F.q);
+    let list = R.filter(r => (F.year === "all" || String(r.y) === F.year) && (F.genre === "all" || r.g === F.genre) &&
+      (!q || norm(r.t).includes(q) || String(r.y).includes(q) || norm(gname(r.g)).includes(q)));
+    const S = { new: (a, b) => b.d.localeCompare(a.d), old: (a, b) => a.d.localeCompare(b.d), az: (a, b) => a.t.localeCompare(b.t, "ru"), long: (a, b) => b.s - a.s };
+    return list.sort(S[F.sort] || S.new);
+  }
+  function renderDisco() {
+    const list = discoFilter();
+    discoIds = list.map(r => r.id);
+    const box = $("disco");
+    if (!list.length) {
+      box.className = "";
+      box.innerHTML = `<div class="empty"><b>Ничего не найдено</b><span>Попробуй другое название или сбрось фильтры.</span><button class="btn btn-ghost" type="button" data-reset>Сбросить фильтры</button></div>`;
+    } else if (F.view === "list") {
+      box.className = "disco-list";
+      box.innerHTML = list.map(r => `<div class="lrow" role="button" tabindex="0" data-play="${r.id}" data-ctx="disco" aria-label="Слушать «${esc(r.t)}», ${r.y}">
+        <img src="${cov(r)}" alt="" width="400" height="400" loading="lazy" decoding="async">
+        <span class="t">${EQI}<b>${esc(r.t)}</b></span><span class="c">${r.y}</span><span class="c g">${gname(r.g)}</span><span class="c">${fmt(r.s)}</span>
+        <a class="ext" href="${ya(r)}" target="_blank" rel="noopener" aria-label="«${esc(r.t)}» на Яндекс Музыке" data-noplay>${icon("i-ext")}</a></div>`).join("");
+    } else {
+      box.className = "disco-grid";
+      box.innerHTML = list.map(r => card(r, "disco", `${r.y} · ${fmt(r.s)}`)).join("");
+    }
+    const dirty = F.q || F.year !== "all" || F.genre !== "all" || F.sort !== "new";
+    $("dCount").innerHTML = list.length === R.length ? `Показаны все <b>${R.length}</b>` : `Найдено <b>${list.length}</b> из ${R.length}`;
+    $("fReset").hidden = !dirty;
+    $("vGrid").setAttribute("aria-pressed", String(F.view === "grid"));
+    $("vList").setAttribute("aria-pressed", String(F.view === "list"));
+    syncMarks();
+  }
+  let qT = 0;
+  $("fq").addEventListener("input", e => { clearTimeout(qT); qT = setTimeout(() => { F.q = e.target.value; renderDisco(); }, 90); });
+  $("fy").addEventListener("change", e => { F.year = e.target.value; renderDisco(); });
+  $("fg").addEventListener("change", e => { F.genre = e.target.value; renderDisco(); });
+  $("fs").addEventListener("change", e => { F.sort = e.target.value; renderDisco(); });
+  $("vGrid").addEventListener("click", () => { F.view = "grid"; store.set("view", "grid"); renderDisco(); });
+  $("vList").addEventListener("click", () => { F.view = "list"; store.set("view", "list"); renderDisco(); });
+  function resetFilters() { Object.assign(F, F0); $("fq").value = ""; $("fy").value = "all"; $("fg").value = "all"; $("fs").value = "new"; renderDisco(); }
+  $("fReset").addEventListener("click", resetFilters);
+  document.addEventListener("click", e => { if (e.target.closest("[data-reset]")) resetFilters(); });
+
+  /* ================= об артисте ================= */
+  const topG = GENRES.slice(0, 3).map(g => gname(g).toLowerCase()).join(", ");
+  $("facts").innerHTML = [
+    ["Релизов", R.length, ""], ["Годы", `${yMin}–${yMax}`, ""], ["Жанры", topG, ""],
+    ["Слушателей в месяц", "52 898", "Яндекс Музыка, ноябрь 2026"]
+  ].map(([k, v, n]) => `<div><dt>${k}</dt><dd${k === "Жанры" ? ' style="font-size:1.05rem;line-height:1.35"' : ""}>${esc(v)}${n ? `<small>${n}</small>` : ""}</dd></div>`).join("");
+  const span = []; for (let y = yMin; y <= yMax; y++) span.push(y);
+  const maxN = Math.max(...span.map(y => countBy("y", y)));
+  $("tl").style.gridTemplateColumns = `repeat(${span.length}, minmax(0, 1fr))`;
+  $("tl").innerHTML = span.map(y => { const n = countBy("y", y);
+    return `<button class="tl-bar" type="button" data-year="${y}" ${n ? "" : "disabled"} aria-label="${y}: ${plural(n, "релиз", "релиза", "релизов")}">
+      <span class="tl-col" style="height:${n ? Math.max(8, n / maxN * 100) : 2}%"><span>${n || ""}</span></span><small>${y}</small></button>`; }).join("");
+  $("tl").addEventListener("click", e => {
+    const b = e.target.closest(".tl-bar"); if (!b || b.disabled) return;
+    F.year = b.dataset.year; $("fy").value = F.year; renderDisco();
+    $("discography").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth" });
+  });
+
+  /* ================= плеер ================= */
+  const au = $("au"), player = $("player");
+  const P = { queue: R.map(r => r.id), src: "Все релизы", i: 0, cur: LATEST, shuffle: store.get("shuffle", false), repeat: store.get("repeat", "off"),
+              hist: [], blob: null, triedBlob: false, loadedId: null, want: false };
+  let actx = null, an = null, freq = null;
+  function graph() {
+    if (actx) { if (actx.state === "suspended") actx.resume().catch(() => {}); return; }
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+      actx = new AC(); const src = actx.createMediaElementSource(au);
+      an = actx.createAnalyser(); an.fftSize = 4096; an.smoothingTimeConstant = .72; an.minDecibels = -92; an.maxDecibels = -16;
+      freq = new Uint8Array(an.frequencyBinCount); src.connect(an); an.connect(actx.destination);
+    } catch (e) { an = null; }
+  }
+  const CTX = { all: () => R.map(r => r.id), latest: () => LATEST_IDS, popular: () => POP, disco: () => discoIds };
+  const CTX_NAME = { all: "Все релизы", latest: "Последние релизы", popular: "Популярное", disco: "Дискография" };
+  function dropBlob() { if (P.blob) { URL.revokeObjectURL(P.blob); P.blob = null; } }
+  function load(r, play) {
+    if (!r) return;
+    P.cur = r; P.want = !!play;
+    if (!has(r)) { au.pause(); sync(); toast(`«${esc(r.t)}» здесь нет — послушай на Яндекс Музыке.`, ya(r)); return; }
+    dropBlob(); P.triedBlob = false; P.loadedId = r.id;
+    au.src = mp3(r);
+    if (play) start();
+    sync();
+  }
+  function start() {
+    graph();
+    const pr = au.play();
+    if (pr && pr.catch) pr.catch(err => {
+      if (err && err.name === "NotAllowedError") toast("Браузер не дал включить звук сам. Нажми ▶ ещё раз.");
+      else if (err && err.name !== "AbortError") failed();
+    });
+  }
+  function failed() {
+    $("pPlay").classList.remove("loading");
+    toast(`Не удалось загрузить «${esc(P.cur.t)}».`, ya(P.cur), "Яндекс Музыка");
+    sync();
+  }
+  au.addEventListener("error", () => {
+    if (!au.src || !P.loadedId) return;
+    if (!P.triedBlob && !au.src.startsWith("blob:")) {
+      // запасной путь для песочниц, где <audio> не грузит файл напрямую
+      P.triedBlob = true;
+      const r = P.cur;
+      fetch(mp3(r)).then(x => x.ok ? x.blob() : Promise.reject(new Error(x.status)))
+        .then(b => { if (P.cur !== r) return; dropBlob(); P.blob = URL.createObjectURL(b); au.src = P.blob; if (P.want) start(); })
+        .catch(failed);
+    } else failed();
+  });
+  function toggle() {
+    if (!has(P.cur)) return load(P.cur, true);
+    if (P.loadedId !== P.cur.id || !au.src) return load(P.cur, true);
+    if (au.paused) { P.want = true; start(); } else { P.want = false; au.pause(); }
+  }
+  function setQueue(ctx, id) {
+    const ids = (CTX[ctx] || CTX.all)();
+    P.queue = ids.slice(); P.src = CTX_NAME[ctx] || CTX_NAME.all; P.i = Math.max(0, P.queue.indexOf(id)); P.hist = [];
+  }
+  function playFrom(id, ctx) {
+    if (P.cur.id === id && P.loadedId === id) return toggle();
+    setQueue(ctx, id); load(byId.get(id), true);
+  }
+  function next(auto) {
+    if (auto && P.repeat === "one") { au.currentTime = 0; start(); return; }
+    const n = P.queue.length; if (!n) return;
+    let j;
+    if (P.shuffle && n > 1) { do { j = Math.floor(Math.random() * n); } while (j === P.i); P.hist.push(P.i); }
+    else { j = P.i + 1; if (j >= n) { if (P.repeat === "all" || !auto) j = 0; else { au.pause(); au.currentTime = 0; sync(); return; } } }
+    P.i = j; load(byId.get(P.queue[j]), true);
+  }
+  function prev() {
+    if (au.currentTime > 3) { au.currentTime = 0; return; }
+    const n = P.queue.length; if (!n) return;
+    let j = P.shuffle && P.hist.length ? P.hist.pop() : (P.i - 1 + n) % n;
+    P.i = j; load(byId.get(P.queue[j]), true);
+  }
+
+  // кнопки и делегирование
+  document.addEventListener("click", e => {
+    if (e.target.closest("[data-noplay]")) return;
+    const el = e.target.closest("[data-play]"); if (!el || !el.dataset.play) return;
+    playFrom(+el.dataset.play, el.dataset.ctx || "all");
+  });
+  document.addEventListener("keydown", e => {
+    const el = e.target.closest && e.target.closest(".lrow");
+    if (el && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); playFrom(+el.dataset.play, "disco"); }
+  });
+  $("heroPlay").addEventListener("click", () => playFrom(P.loadedId ? P.cur.id : LATEST.id, "all"));
+  $("nowArt").addEventListener("click", () => playFrom(P.cur.id, "all"));
+  $("pPlay").addEventListener("click", toggle);
+  $("pNext").addEventListener("click", () => next(false));
+  $("pPrev").addEventListener("click", prev);
+  $("pShuffle").addEventListener("click", () => { P.shuffle = !P.shuffle; P.hist = []; store.set("shuffle", P.shuffle); syncModes(); });
+  $("pRepeat").addEventListener("click", () => { P.repeat = { off: "all", all: "one", one: "off" }[P.repeat]; store.set("repeat", P.repeat); syncModes(); });
+  function syncModes() {
+    $("pShuffle").setAttribute("aria-pressed", String(P.shuffle));
+    const rep = $("pRepeat");
+    rep.setAttribute("aria-pressed", String(P.repeat !== "off"));
+    rep.setAttribute("aria-label", { off: "Повтор: выключен", all: "Повтор: вся очередь", one: "Повтор: один трек" }[P.repeat]);
+    $("pRepIcon").setAttribute("href", P.repeat === "one" ? "#i-repeat1" : "#i-repeat");
+  }
+
+  // перемотка
+  const seek = $("seek"); let dragging = false;
+  seek.addEventListener("input", () => { dragging = true; if (au.duration) { const t = seek.value / 1000 * au.duration; $("tCur").textContent = fmt(t); $("sCur").textContent = fmt(t); seek.style.setProperty("--p", seek.value / 10 + "%"); } });
+  seek.addEventListener("change", () => { if (au.duration) au.currentTime = seek.value / 1000 * au.duration; dragging = false; });
+  function timeUI() {
+    const d = au.duration || P.cur.s, c = P.loadedId === P.cur.id ? au.currentTime : 0;
+    if (!dragging) { const v = d ? Math.round(c / d * 1000) : 0; seek.value = v; seek.style.setProperty("--p", v / 10 + "%"); }
+    $("tCur").textContent = fmt(c); $("tDur").textContent = fmt(d); $("sCur").textContent = fmt(c); $("sDur").textContent = fmt(d);
+    seek.setAttribute("aria-valuetext", fmt(c) + " из " + fmt(d));
+  }
+  au.addEventListener("timeupdate", timeUI);
+  au.addEventListener("loadedmetadata", timeUI);
+  au.addEventListener("waiting", () => $("pPlay").classList.add("loading"));
+  au.addEventListener("playing", () => $("pPlay").classList.remove("loading"));
+  au.addEventListener("canplay", () => $("pPlay").classList.remove("loading"));
+  ["play", "pause"].forEach(ev => au.addEventListener(ev, () => { sync(); wake(); }));
+  au.addEventListener("ended", () => next(true));
+
+  // громкость
+  const vol = $("vol");
+  au.volume = Math.min(1, Math.max(0, store.get("vol", .8))); au.muted = store.get("muted", false);
+  function volUI() {
+    const v = au.muted ? 0 : Math.round(au.volume * 100);
+    vol.value = v; vol.style.setProperty("--v", v + "%");
+    $("pVolIcon").setAttribute("href", au.muted || au.volume === 0 ? "#i-mute" : "#i-vol");
+    $("pMute").setAttribute("aria-label", au.muted ? "Включить звук" : "Выключить звук");
+  }
+  vol.addEventListener("input", () => { au.volume = vol.value / 100; au.muted = au.volume === 0; store.set("vol", au.volume); store.set("muted", au.muted); volUI(); });
+  $("pMute").addEventListener("click", () => { au.muted = !au.muted; if (!au.muted && au.volume === 0) au.volume = .6; store.set("muted", au.muted); store.set("vol", au.volume); volUI(); });
+
+  // очередь
+  const qBox = $("queue");
+  function renderQueue() {
+    $("qSrc").textContent = P.src + " · " + plural(P.queue.length, "трек", "трека", "треков");
+    $("qList").innerHTML = P.queue.map((id, i) => { const r = byId.get(id);
+      return `<button class="q-row${i === P.i && P.cur.id === id ? " is-current" : ""}${!au.paused && P.cur.id === id ? " is-playing" : ""}" type="button" data-qi="${i}">
+        <img src="${cov(r)}" alt="" width="400" height="400" loading="lazy"><span><b>${esc(r.t)}</b><small>${r.y} · ${fmt(r.s)}</small></span>${EQI}</button>`; }).join("");
+    const cur = qBox.querySelector(".is-current"); if (cur) cur.scrollIntoView({ block: "nearest" });
+  }
+  function openQueue(open) { qBox.hidden = !open; $("pQueue").setAttribute("aria-expanded", String(open)); if (open) renderQueue(); }
+  $("pQueue").addEventListener("click", () => openQueue(qBox.hidden));
+  $("qClose").addEventListener("click", () => openQueue(false));
+  $("qList").addEventListener("click", e => { const b = e.target.closest("[data-qi]"); if (!b) return; P.i = +b.dataset.qi; P.hist = []; load(byId.get(P.queue[P.i]), true); });
+
+  // мобильный лист плеера
+  const sheetMQ = matchMedia("(max-width: 860px)");
+  function openSheet(open) {
+    if (open && !sheetMQ.matches) return;
+    player.classList.toggle("open", open);
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    $("pTrack").setAttribute("aria-label", open ? P.cur.t : "Открыть плеер");
+    if (open) { sizeCanvases(); $("pCollapse").focus(); }
+  }
+  $("pTrack").addEventListener("click", () => { if (!player.classList.contains("open")) openSheet(true); });
+  $("pCollapse").addEventListener("click", () => openSheet(false));
+  sheetMQ.addEventListener("change", e => { if (!e.matches) openSheet(false); });
+
+  // синхронизация интерфейса с текущим треком
+  function sync() {
+    const r = P.cur, playing = !au.paused && P.loadedId === r.id;
+    $("pCover").src = cov(r); $("pSheetArt").src = cov(r);
+    $("pTitle").textContent = r.t; $("pMeta").textContent = `${r.y} · ${gname(r.g)} · Revesane`;
+    $("pYa").href = ya(r); $("pAp").href = apple(r);
+    const dl = $("pDl");
+    if (LOCAL_DL && has(r)) { dl.href = "audio/" + r.tr + ".mp3"; dl.setAttribute("download", "Revesane — " + r.t + ".mp3"); dl.removeAttribute("target"); dl.setAttribute("aria-label", "Скачать mp3 «" + r.t + "»"); }
+    else { dl.href = "https://lightaudio.ru/mp3/revesane"; dl.removeAttribute("download"); dl.target = "_blank"; dl.setAttribute("aria-label", "Скачать на LightAudio"); }
+    $("pIcon").setAttribute("href", playing ? "#i-pause" : "#i-play");
+    $("pPlay").setAttribute("aria-label", playing ? "Пауза" : "Играть");
+    // первый экран
+    $("nowImg").src = cov(r); $("nowImg").alt = "Обложка «" + r.t + "»";
+    $("nowTitle").textContent = r.t; $("nowYear").textContent = r.y + " · " + gname(r.g);
+    $("heroNow").classList.toggle("is-live", playing);
+    $("heroPlay").querySelector("use").setAttribute("href", playing ? "#i-pause" : "#i-play");
+    $("heroPlayLabel").textContent = playing ? "Пауза" : (P.loadedId ? "Продолжить" : "Слушать новый релиз");
+    $("heroPlaySub").textContent = r.t + " · " + r.y;
+    // новый релиз
+    const fp = playing && r.id === LATEST.id;
+    $("featPlay").querySelector("use").setAttribute("href", fp ? "#i-pause" : "#i-play");
+    $("featPlay").querySelector("span").textContent = fp ? "Пауза" : "Слушать";
+    syncMarks(); timeUI();
+    if (!qBox.hidden) renderQueue();
+    media(r);
+  }
+  function syncMarks() {
+    const id = P.cur.id, playing = !au.paused && P.loadedId === id;
+    $$("[data-play]").forEach(el => {
+      const on = +el.dataset.play === id;
+      el.classList.toggle("is-current", on && !!P.loadedId);
+      el.classList.toggle("is-playing", on && playing);
+      const u = el.querySelector(".ico use"); if (u) u.setAttribute("href", on && playing ? "#i-pause" : "#i-play");
+    });
+  }
+
+  // системные кнопки и экран блокировки
+  function media(r) {
+    if (!("mediaSession" in navigator)) return;
+    try {
+      navigator.mediaSession.metadata = new MediaMetadata({ title: r.t, artist: "Revesane", album: "Сингл · " + r.y,
+        artwork: [{ src: new URL(cov(r), location.href).href, sizes: "400x400", type: "image/jpeg" }] });
+      navigator.mediaSession.playbackState = au.paused ? "paused" : "playing";
+    } catch (e) {}
+  }
+  if ("mediaSession" in navigator) {
+    const h = (a, f) => { try { navigator.mediaSession.setActionHandler(a, f); } catch (e) {} };
+    h("play", () => toggle()); h("pause", () => au.pause()); h("previoustrack", prev); h("nexttrack", () => next(false));
+    h("seekto", d => { if (d && d.seekTime != null) au.currentTime = d.seekTime; });
+  }
+
+  // клавиатура: пробел — пауза, M — звук
+  document.addEventListener("keydown", e => {
+    if (e.defaultPrevented || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target, tag = (t.tagName || "").toLowerCase();
+    if (e.key === "Escape") { if (!qBox.hidden) openQueue(false); else if (player.classList.contains("open")) openSheet(false); else if (!$("menu").hidden) openMenu(false); return; }
+    if (["input", "select", "textarea", "button", "a"].includes(tag) || t.isContentEditable || (t.closest && t.closest(".lrow"))) return;
+    if (e.code === "Space") { e.preventDefault(); toggle(); }
+    else if (e.key === "m" || e.key === "M" || e.key === "ь" || e.key === "Ь") { $("pMute").click(); }
+  });
+
+  /* ================= уведомление ================= */
+  let toastT = 0;
+  function toast(html, href, label) {
+    const el = $("toast");
+    el.innerHTML = `<span>${html}</span>${href ? `<a href="${href}" target="_blank" rel="noopener">${label || "Открыть"} ↗</a>` : ""}<button type="button" aria-label="Закрыть">${icon("i-close")}</button>`;
+    el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => el.hidden = true, 7000);
+    el.querySelector("button").onclick = () => el.hidden = true;
+  }
+
+  /* ================= шапка и меню ================= */
+  const hdr = $("hdr");
+  let hdrT = 0;
+  const hdrUI = () => { hdrT = 0; hdr.classList.toggle("solid", scrollY > 60); };
+  addEventListener("scroll", () => { if (!hdrT) hdrT = requestAnimationFrame(hdrUI); }, { passive: true });
+  addEventListener("hashchange", hdrUI); addEventListener("load", hdrUI); hdrUI();
+  const navLinks = $$(".nav a");
+  const secIO = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const id = e.target.id === "latest" || e.target.id === "popular" ? "music" : e.target.id;
+    navLinks.forEach(a => a.setAttribute("aria-current", String(a.dataset.nav === id)));
+  }), { rootMargin: "-45% 0px -50% 0px" });
+  ["music", "latest", "popular", "discography", "about", "listen"].forEach(id => secIO.observe($(id)));
+  function openMenu(open) {
+    $("menu").hidden = !open; $("menuBtn").setAttribute("aria-expanded", String(open));
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    if (open) $("menuClose").focus(); else $("menuBtn").focus();
+  }
+  $("menuBtn").addEventListener("click", () => openMenu(true));
+  $("menuClose").addEventListener("click", () => openMenu(false));
+  $("menu").addEventListener("click", e => { if (e.target.closest("nav a")) openMenu(false); });
+  $("searchBtn").addEventListener("click", () => {
+    $("discography").scrollIntoView({ behavior: REDUCE ? "auto" : "smooth" });
+    setTimeout(() => $("fq").focus({ preventScroll: true }), REDUCE ? 0 : 450);
+  });
+  $("toTop").addEventListener("click", () => scrollTo({ top: 0, behavior: REDUCE ? "auto" : "smooth" }));
+
+  /* ================= звук → свет ================= */
+  const E = { bass: 0, mid: 0, high: 0, kick: 0, slow: 0 };
+  // АЧХ: 96 полос по логарифмической шкале 30 Гц … 16 кГц, значения — уровень полосы (дБ → 0…1)
+  const SPEC = new Float32Array(96), PEAK = new Float32Array(96);
+  const F_LO = 30, F_HI = 16000, LOGR = Math.log(F_HI / F_LO);
+  const fAt = u => F_LO * Math.exp(u * LOGR);
+  const uAt = f => Math.log(f / F_LO) / LOGR;
+  function listen(t) {
+    const live = an && !au.paused;
+    if (live) {
+      an.getByteFrequencyData(freq);
+      const hz = actx.sampleRate / an.fftSize, nb = freq.length - 1;
+      const at = f => { const b = Math.min(nb, f / hz), i = Math.floor(b), fr = b - i; return (freq[i] * (1 - fr) + freq[Math.min(nb, i + 1)] * fr) / 255; };
+      const band = (f0, f1) => { let s = 0, c = 0; const a = Math.max(1, Math.floor(f0 / hz)), z = Math.min(nb, Math.ceil(f1 / hz)); for (let i = a; i <= z; i++) { s += freq[i]; c++; } return c ? s / c / 255 : 0; };
+      const b = band(35, 160), m = band(160, 2500), h = band(2500, 12000);
+      const k = b - E.slow > .05 ? Math.min(1, (b - E.slow) * 5) : 0;
+      E.slow += (b - E.slow) * .04;
+      E.bass += (b - E.bass) * .3; E.mid += (m - E.mid) * .15; E.high += (h - E.high) * .2; E.kick = Math.max(k, E.kick * .9);
+      for (let i = 0; i < SPEC.length; i++) {
+        const u0 = i / SPEC.length, f0 = fAt(u0), f1 = fAt((i + 1) / SPEC.length);
+        let v = (f1 - f0) / hz < 2 ? at(Math.sqrt(f0 * f1)) : band(f0, f1);
+        v = Math.min(1, v * (.9 + .38 * u0));            // лёгкий подъём верхов, как у анализаторов
+        SPEC[i] += (v - SPEC[i]) * (v > SPEC[i] ? .55 : .13);   // быстрая атака, мягкий спад
+      }
+    } else {
+      // тишина: спокойная кривая «розового шума», без ритма
+      E.bass += (.06 + .02 * Math.sin(t * .7) - E.bass) * .05; E.mid += (.05 - E.mid) * .05; E.high += (.04 - E.high) * .05; E.kick *= .9;
+      for (let i = 0; i < SPEC.length; i++) {
+        const u = i / (SPEC.length - 1), v = .08 + .26 * Math.exp(-Math.pow((u - .14) / .16, 2)) + .1 * Math.pow(1 - u, 1.4) + .03 * Math.sin(u * 7 + t * .7) * Math.sin(u * 2.7 - t * .4);
+        SPEC[i] += (v - SPEC[i]) * .05;
+      }
+    }
+    for (let i = 0; i < SPEC.length; i++) PEAK[i] = Math.max(SPEC[i], PEAK[i] - .0035);
+    return live;
+  }
+
+  /* ================= эквалайзеры ================= */
+  const EQS = [{ el: $("heroEq"), n: 48, lw: 1.6, glow: 9, w: 0, h: 0, vis: true }, { el: $("pEq"), n: 40, lw: 1.4, glow: 7, w: 0, h: 0, vis: true }, { el: $("featEq"), n: 96, lw: 2, glow: 14, labels: true, w: 0, h: 0, vis: false }];
+  EQS.forEach(q => q.g = q.el.getContext("2d"));
+  function sizeCanvases() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    EQS.forEach(q => { const w = q.el.clientWidth, h = q.el.clientHeight; q.w = w; q.h = h; if (!w) return; q.el.width = Math.round(w * dpr); q.el.height = Math.round(h * dpr); q.g.setTransform(dpr, 0, 0, dpr, 0, 0); });
+  }
+  // АЧХ-кривая: заливка с затуханием книзу, светящийся контур с цветом по частоте, линия пиков
+  const HUE = [[0, "#2f56ff"], [.22, "#397bff"], [.45, "#4aa6ff"], [.62, "#69c8ff"], [.8, "#93b4ff"], [1, "#b98fff"]];
+  const GRID = [50, 100, 200, 500, 1000, 2000, 5000, 10000];
+  const TICKS = [[50, "50 Гц"], [200, "200"], [1000, "1 кГц"], [5000, "5 кГц"], [15000, "15 кГц"]];
+  function curve(p, xs, ys) {
+    p.moveTo(xs[0], ys[0]);
+    for (let i = 1; i < xs.length - 1; i++) p.quadraticCurveTo(xs[i], ys[i], (xs[i] + xs[i + 1]) / 2, (ys[i] + ys[i + 1]) / 2);
+    p.lineTo(xs[xs.length - 1], ys[ys.length - 1]);
+  }
+  function spectrum(q) { spectrumTo(q.g, q.w, q.h, q); }
+  function spectrumTo(g, w, h, q) {
+    const n = q.n; if (!w) return;
+    const bot = q.labels ? h - 18 : h - 1, top = q.labels ? 8 : 3, H = bot - top;
+    g.clearRect(0, 0, w, h);
+    const xs = [], vs = [], pv = [];
+    for (let i = 0; i < n; i++) {
+      const u = i / (n - 1), f = u * (SPEC.length - 1), j = Math.floor(f), fr = f - j, j2 = Math.min(SPEC.length - 1, j + 1);
+      xs.push(u * w); vs.push(SPEC[j] * (1 - fr) + SPEC[j2] * fr); pv.push(PEAK[j] * (1 - fr) + PEAK[j2] * fr);
+    }
+    // мягкое сглаживание по частоте: кривая остаётся точной, но без мелкой дрожи
+    const soft = a => { for (let k = 0; k < 2; k++) a = a.map((v, i) => (a[Math.max(0, i - 1)] + 2 * v + a[Math.min(a.length - 1, i + 1)]) / 4); return a; };
+    const ys = soft(vs).map(v => bot - H * v), ps = soft(pv).map(v => bot - H * v);
+    const hg = g.createLinearGradient(0, 0, w, 0); HUE.forEach(([o, c]) => hg.addColorStop(o, c));
+    // заливка
+    const area = new Path2D(); area.moveTo(0, bot); area.lineTo(xs[0], ys[0]);
+    for (let i = 1; i < n - 1; i++) area.quadraticCurveTo(xs[i], ys[i], (xs[i] + xs[i + 1]) / 2, (ys[i] + ys[i + 1]) / 2);
+    area.lineTo(xs[n - 1], ys[n - 1]); area.lineTo(w, bot); area.closePath();
+    if (q.ridge) {
+      // вариант «хребет»: плотная тёмная гряда, свет только по гребню
+      const rg = g.createLinearGradient(0, top, 0, bot); rg.addColorStop(0, "rgba(18,44,92,.96)"); rg.addColorStop(.5, "rgba(9,22,48,.98)"); rg.addColorStop(1, "rgba(5,10,22,1)");
+      g.save(); g.fillStyle = rg; g.fill(area); g.globalAlpha = .22; g.fillStyle = hg; g.fill(area); g.restore();
+    } else {
+      g.save(); g.globalAlpha = q.fillA || .78; g.fillStyle = hg; g.fill(area); g.restore();
+      g.save(); g.globalCompositeOperation = "destination-in";
+      const vg = g.createLinearGradient(0, top, 0, bot); vg.addColorStop(0, "rgba(0,0,0,1)"); vg.addColorStop(.55, "rgba(0,0,0,.55)"); vg.addColorStop(1, "rgba(0,0,0,.06)");
+      g.fillStyle = vg; g.fillRect(0, 0, w, h); g.restore();
+    }
+    // сетка и подписи — позади кривой
+    if (q.labels) {
+      g.save(); g.globalCompositeOperation = "destination-over";
+      g.fillStyle = "rgba(140,174,255,.07)";
+      GRID.forEach(f => g.fillRect(Math.round(uAt(f) * w), top, 1, H));
+      [.25, .5, .75].forEach(k => g.fillRect(0, Math.round(top + H * k), w, 1));
+      g.restore();
+      g.save(); g.font = "500 10px Montserrat, system-ui, sans-serif"; g.fillStyle = "rgba(141,156,179,.85)"; g.textBaseline = "alphabetic";
+      TICKS.forEach(([f, l], i) => { const x = uAt(f) * w; g.textAlign = i === 0 ? "left" : i === TICKS.length - 1 ? "right" : "center"; g.fillText(l, i === 0 ? Math.max(0, x - 4) : Math.min(w, x), h - 3); });
+      g.fillStyle = "rgba(140,174,255,.18)"; g.fillRect(0, bot, w, 1);
+      g.restore();
+    }
+    // пики
+    g.save(); const pp = new Path2D(); curve(pp, xs, ps);
+    g.strokeStyle = "rgba(205,228,255,.3)"; g.lineWidth = 1; g.stroke(pp); g.restore();
+    // контур со свечением
+    g.save(); const line = new Path2D(); curve(line, xs, ys);
+    g.lineJoin = "round"; g.lineCap = "round"; g.strokeStyle = hg; g.lineWidth = q.lw;
+    g.shadowColor = "rgba(105,200,255,.9)"; g.shadowBlur = q.glow; g.stroke(line);
+    g.shadowBlur = 0; g.globalAlpha = .6; g.lineWidth = Math.max(.6, q.lw * .45); g.strokeStyle = "rgba(235,245,255,.9)"; g.stroke(line);
+    g.restore();
+  }
+
+  /* ================= ночная сцена ================= */
+  const Scene = (() => {
+    const cv = $("scene"), g = cv.getContext("2d");
+    let W = 0, H = 0, dpr = 1, L = null, fogX = 0, twinkle = [];
+    function rng(seed) { let s = seed >>> 0 || 1; return () => (s = (s * 1664525 + 1013904223) >>> 0) / 4294967296; }
+    function noise(seed) { const r = rng(seed), p = Array.from({ length: 256 }, r); return x => { const i = Math.floor(x), f = x - i, u = f * f * (3 - 2 * f); return p[i & 255] + (p[(i + 1) & 255] - p[i & 255]) * u; }; }
+    function layer() { const c = document.createElement("canvas"); c.width = Math.ceil(W * dpr); c.height = Math.ceil(H * dpr); const x = c.getContext("2d"); x.setTransform(dpr, 0, 0, dpr, 0, 0); return [c, x]; }
+    // хребет: ридж-шум в пять октав + конусы главных вершин
+    function ridge(seed, base, amp, freq, peaks) {
+      const ns = [0, 1, 2, 3, 4].map(k => noise(seed + k * 17)), pts = [], step = Math.max(2, W / 480);
+      for (let x = -40; x <= W + 40; x += step) {
+        const u = x / W; let s = 0, a = 1, tot = 0;
+        for (let k = 0; k < 5; k++) { const r = 1 - Math.abs(2 * ns[k](u * freq * Math.pow(2.15, k) + k * 3.1) - 1); s += a * r * r; tot += a; a *= .5; }
+        let hh = amp * Math.pow(s / tot, 1.5);
+        for (const [px, pa, pw] of peaks) hh += pa * Math.pow(Math.max(0, 1 - Math.abs(u - px) / pw), 1.25);
+        pts.push([x, base - hh]);
+      }
+      return pts;
+    }
+    function paintRidge(x, pts, top, bottom, rim, mist, lit) {
+      const minY = Math.min(...pts.map(p => p[1]));
+      const gr = x.createLinearGradient(0, minY, 0, H); gr.addColorStop(0, top); gr.addColorStop(1, bottom);
+      x.beginPath(); x.moveTo(pts[0][0], H + 2); pts.forEach(p => x.lineTo(p[0], p[1])); x.lineTo(pts[pts.length - 1][0], H + 2); x.closePath();
+      x.fillStyle = gr; x.fill();
+      if (lit) {
+        // склоны, обращённые к планете (свет сверху справа), — светлее, как снег в лунном свете
+        x.save(); x.clip();
+        let ks = pts.slice(0, -1).map((p, i) => Math.min(1, Math.max(0, (pts[i + 1][1] - p[1]) / (pts[i + 1][0] - p[0])) * 1.3));
+        for (let pass = 0; pass < 3; pass++) ks = ks.map((_, i) => { let s = 0, c = 0; for (let j = i - 7; j <= i + 7; j++) if (j >= 0 && j < ks.length) { s += ks[j]; c++; } return s / c; });
+        // непрерывные полосы света вниз от гребня: много тонких проходов дают мягкое затухание без швов
+        const d = H * .15;
+        for (let pass = 1; pass <= 14; pass++) {
+          x.beginPath(); x.moveTo(pts[0][0], pts[0][1]);
+          for (let i = 1; i < pts.length; i++) x.lineTo(pts[i][0], pts[i][1]);
+          for (let i = pts.length - 1; i >= 0; i--) x.lineTo(pts[i][0], pts[i][1] + d * (ks[Math.min(i, ks.length - 1)] || 0) * pass / 14 + .5);
+          x.closePath(); x.fillStyle = `rgba(150,190,255,${lit / 10})`; x.fill();
+        }
+        x.restore();
+      }
+      if (mist) { const mg = x.createLinearGradient(0, minY, 0, H); mg.addColorStop(0, "rgba(140,174,255,0)"); mg.addColorStop(.55, mist); mg.addColorStop(1, "rgba(140,174,255,0)"); x.fillStyle = mg; x.fill(); }
+      if (rim) {
+        const rg = x.createLinearGradient(0, 0, W, 0); rg.addColorStop(0, "rgba(140,174,255,.05)"); rg.addColorStop(.7, rim); rg.addColorStop(1, "rgba(140,174,255,.08)");
+        x.strokeStyle = rg; x.lineWidth = 1.1; x.beginPath(); pts.forEach((p, i) => i ? x.lineTo(p[0], p[1]) : x.moveTo(p[0], p[1])); x.stroke();
+      }
+    }
+    function build() {
+      const rect = cv.getBoundingClientRect(); W = Math.max(1, rect.width); H = Math.max(1, rect.height);
+      const mobile = W < 760; dpr = Math.min(window.devicePixelRatio || 1, mobile ? 1 : 1.5);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const r = rng(7);
+      // небо и звёзды
+      const [sky, s] = layer();
+      const sg = s.createLinearGradient(0, 0, 0, H); sg.addColorStop(0, "#03060f"); sg.addColorStop(.45, "#061229"); sg.addColorStop(.78, "#0c2148"); sg.addColorStop(1, "#081426");
+      s.fillStyle = sg; s.fillRect(0, 0, W, H);
+      const nStars = Math.round(W * H / (mobile ? 5200 : 3400));
+      for (let i = 0; i < nStars; i++) { const y = Math.pow(r(), 1.5) * H * .7, a = .15 + r() * .6, z = r() < .08 ? 1.6 : r() < .4 ? 1.1 : .7;
+        s.fillStyle = `rgba(${200 + r() * 55 | 0},${215 + r() * 40 | 0},255,${a})`; s.fillRect(r() * W, y, z, z); }
+      twinkle = Array.from({ length: mobile ? 24 : 54 }, () => ({ x: r() * W, y: Math.pow(r(), 1.4) * H * .62, s: .8 + r() * 1.4, f: .4 + r() * 1.6, p: r() * 6 }));
+      // планета: тёмный диск с холодным ободком
+      const pR = Math.max(W * .62, H * 1.05), pcx = W * (mobile ? 1.05 : .985), pcy = -H * (mobile ? .52 : .36);
+      const [pl, p] = layer();
+      const body = p.createRadialGradient(pcx - pR * .25, pcy + pR * .35, pR * .2, pcx, pcy, pR);
+      body.addColorStop(0, "#020611"); body.addColorStop(.86, "#06132b"); body.addColorStop(1, "#0d2c5e");
+      p.fillStyle = body; p.beginPath(); p.arc(pcx, pcy, pR, 0, Math.PI * 2); p.fill();
+      const term = p.createRadialGradient(pcx, pcy, pR * .9, pcx, pcy, pR);
+      term.addColorStop(0, "rgba(57,123,255,0)"); term.addColorStop(1, "rgba(105,200,255,.32)");
+      p.fillStyle = term; p.beginPath(); p.arc(pcx, pcy, pR, 0, Math.PI * 2); p.fill();
+      const rimG = p.createLinearGradient(pcx - pR, pcy, pcx, pcy + pR);
+      rimG.addColorStop(0, "rgba(190,225,255,.25)"); rimG.addColorStop(.55, "rgba(215,238,255,.95)"); rimG.addColorStop(1, "rgba(140,190,255,.35)");
+      p.strokeStyle = rimG; p.lineWidth = 1.6; p.beginPath(); p.arc(pcx, pcy, pR, 0, Math.PI * 2); p.stroke();
+      const [gl, q] = layer();
+      const halo = q.createRadialGradient(pcx, pcy, pR * .985, pcx, pcy, pR * 1.16);
+      halo.addColorStop(0, "rgba(105,200,255,.55)"); halo.addColorStop(.25, "rgba(57,123,255,.22)"); halo.addColorStop(1, "rgba(57,123,255,0)");
+      q.fillStyle = halo; q.fillRect(0, 0, W, H);
+      // горы: три плана
+      const [far, f] = layer(), [mid, m] = layer(), [near, n] = layer();
+      paintRidge(f, ridge(3, H * .82, H * .19, 4, [[.76, H * .1, .12], [.33, H * .05, .09]]), "#122850", "#0a1730", "rgba(175,210,255,.55)", "rgba(140,174,255,.05)", .16);
+      paintRidge(m, ridge(9, H * .94, H * .16, 3.4, [[mobile ? .66 : .57, H * .25, .2], [.17, H * .07, .12]]), "#0b1b39", "#050c1b", "rgba(170,210,255,.5)", "rgba(105,150,230,.04)", .22);
+      paintRidge(n, ridge(17, H * 1.03, H * .12, 2.6, [[.06, H * .15, .2], [.95, H * .11, .15]]), "#060d1d", "#03060e", "rgba(140,174,255,.2)", null, .08);
+      // туман
+      const fw = Math.ceil(W * 2), fh = Math.ceil(H * .32), fog = document.createElement("canvas");
+      fog.width = Math.ceil(fw * dpr); fog.height = Math.ceil(fh * dpr); const fg = fog.getContext("2d"); fg.setTransform(dpr, 0, 0, dpr, 0, 0);
+      for (let i = 0; i < (mobile ? 40 : 80); i++) { const x = r() * fw, y = fh * (.35 + r() * .45), rr = fh * (.25 + r() * .5);
+        const gg = fg.createRadialGradient(x, y, 0, x, y, rr); gg.addColorStop(0, `rgba(140,174,255,${.025 + r() * .035})`); gg.addColorStop(1, "rgba(140,174,255,0)");
+        fg.fillStyle = gg; fg.fillRect(x - rr, y - rr, rr * 2, rr * 2); }
+      // слой для широкой АЧХ
+      const sh = Math.round(H * (mobile ? .3 : .4)), spec = document.createElement("canvas");
+      spec.width = Math.ceil(W * dpr); spec.height = Math.ceil(sh * dpr);
+      const sg2 = spec.getContext("2d"); sg2.setTransform(dpr, 0, 0, dpr, 0, 0);
+      L = { sky, pl, gl, far, mid, near, fog, fw, fh, mobile, spec, sg2, sh };
+    }
+    let mx = 0, tmx = 0;
+    addEventListener("pointermove", e => { tmx = e.clientX / innerWidth - .5; }, { passive: true });
+    function draw(t, dt) {
+      if (!L) return;
+      if (!L.mobile && !REDUCE) mx += (tmx - mx) * .04;
+      const sy = Math.min(H, scrollY);
+      g.globalCompositeOperation = "source-over"; g.globalAlpha = 1;
+      g.drawImage(L.sky, 0, 0, W, H);
+      if (!REDUCE) for (const s of twinkle) { g.fillStyle = `rgba(220,235,255,${.25 + .55 * (.5 + .5 * Math.sin(t * s.f + s.p)) * (.7 + E.high * 2)})`; g.fillRect(s.x, s.y, s.s, s.s); }
+      g.globalCompositeOperation = "lighter"; g.globalAlpha = Math.min(1, .55 + E.bass * 1.4 + E.kick * .35);
+      g.drawImage(L.gl, mx * -8, sy * .06, W, H);
+      g.globalCompositeOperation = "source-over"; g.globalAlpha = 1;
+      g.drawImage(L.pl, mx * -8, sy * .06, W, H);
+      g.drawImage(L.far, mx * -14 - 0, sy * .12, W, H);
+      if (!REDUCE) fogX = (fogX + dt * (6 + E.mid * 30)) % L.fw;
+      g.globalAlpha = .9; g.drawImage(L.fog, -fogX, H * .58 + sy * .14, L.fw, L.fh); g.drawImage(L.fog, L.fw - fogX, H * .58 + sy * .14, L.fw, L.fh); g.globalAlpha = 1;
+      g.drawImage(L.mid, mx * -26, sy * .18, W, H);
+      // АЧХ-хребет: гряда со светящимся гребнем между средним и ближним планом гор
+      spectrumTo(L.sg2, W, L.sh, { n: L.mobile ? 64 : 120, lw: L.mobile ? 1.6 : 2.2, glow: L.mobile ? 10 : 16, ridge: true });
+      g.drawImage(L.spec, mx * -34 - 20, H - L.sh + sy * .22, W + 40, L.sh);
+      g.globalAlpha = .7; g.drawImage(L.fog, -(fogX * 1.6 % L.fw), H * .72 + sy * .2, L.fw, L.fh); g.drawImage(L.fog, L.fw - (fogX * 1.6 % L.fw), H * .72 + sy * .2, L.fw, L.fh); g.globalAlpha = 1;
+      g.drawImage(L.near, mx * -42, sy * .26, W, H);
+    }
+    return { build, draw };
+  })();
+
+  /* ================= цикл анимации ================= */
+  const KICK_T = [$("top"), $("music"), $("ring"), player];
+  let raf = 0, last = performance.now(), heroVis = true, featVis = false, kLast = -1, built = false;
+  const shouldRun = () => !document.hidden && ((heroVis && !REDUCE) || !au.paused);
+  function frame(now) {
+    raf = 0;
+    const dt = Math.min(.05, Math.max(0, (now - last) / 1000)); last = now;
+    const t = now / 1000;
+    listen(t);
+    if (heroVis) Scene.draw(t, dt);
+    if (heroVis) spectrum(EQS[0]);
+    if (EQS[1].w) spectrum(EQS[1]);
+    if (featVis) spectrum(EQS[2]);
+    const kv = REDUCE ? 0 : Math.round(E.kick * 25) / 25;
+    if (kv !== kLast) { KICK_T.forEach(el => el.style.setProperty("--kick", kv)); kLast = kv; }
+    if (shouldRun()) raf = requestAnimationFrame(frame);
+  }
+  function wake() { if (!raf && shouldRun()) { last = performance.now(); raf = requestAnimationFrame(frame); } else if (!raf) { frame(performance.now()); } }
+  document.addEventListener("visibilitychange", wake);
+  new IntersectionObserver(([e]) => { heroVis = e.isIntersecting; wake(); }).observe($("top"));
+  new IntersectionObserver(([e]) => { featVis = e.isIntersecting; EQS[2].vis = featVis; wake(); }).observe($("featEq"));
+  let rT = 0;
+  function rebuild() { Scene.build(); sizeCanvases(); built = true; wake(); }
+  new ResizeObserver(() => { clearTimeout(rT); rT = setTimeout(rebuild, built ? 140 : 0); }).observe($("top"));
+
+  /* ================= старт ================= */
+  renderDisco(); syncModes(); volUI(); sync();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeCanvases);
+})();
+</script>
+
+</body>
+</html>
