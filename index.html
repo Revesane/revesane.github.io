@@ -407,8 +407,10 @@ button { font: inherit; color: inherit; }
 .ftr-donate { display: inline-flex; align-items: center; gap: 10px; margin-top: 18px; padding: 11px 18px; border-radius: var(--r-pill); border: 1px solid var(--line-2); font: 600 .72rem/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase; transition: border-color var(--d-2), background var(--d-2); }
 .ftr-donate .i { width: 16px; height: 16px; color: var(--cyan); }
 .ftr-donate:hover { border-color: var(--cyan); background: rgba(57, 123, 255, .16); }
-.ftr-mark { font: 400 clamp(2.6rem, 11.5vw, 10.5rem)/.9 var(--f-mark); letter-spacing: .12em; margin-right: -.12em; white-space: nowrap; text-align: center;
+.ftr-mark { font: 400 min(10.4vw, 8rem)/.9 var(--f-mark); letter-spacing: .12em; margin-right: -.12em; white-space: nowrap; text-align: center;
   background: linear-gradient(180deg, rgba(140, 174, 255, .22), rgba(140, 174, 255, .02)); -webkit-background-clip: text; background-clip: text; color: transparent; user-select: none; overflow: hidden; }
+/* размер логотипа — от ширины колонки подвала: слово (8,85 em) всегда помещается целиком */
+@supports (width: 1cqi) { .ftr .wrap { container-type: inline-size; } .ftr-mark { font-size: calc(100cqi / 9.1); } }
 .ftr-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: .78rem; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 22px; }
 .ftr-base button { border: 0; background: none; color: var(--soft); cursor: pointer; font: 600 .72rem/1 var(--f-ui); letter-spacing: .16em; text-transform: uppercase; display: inline-flex; gap: 8px; align-items: center; }
 .ftr-base button .i { width: 16px; height: 16px; transform: rotate(180deg); }
